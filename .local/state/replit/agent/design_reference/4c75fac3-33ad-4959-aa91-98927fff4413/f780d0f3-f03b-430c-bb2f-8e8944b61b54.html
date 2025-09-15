@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marpe - Global Procurement Simplified</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'marpe-blue': '#1e40af',
+                        'marpe-teal': '#0891b2',
+                        'marpe-orange': '#f97316',
+                        'marpe-slate': '#64748b',
+                        'marpe-dark': '#0f172a',
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'fade-in': 'fadeIn 0.6s ease-out',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #1e40af 0%, #0891b2 100%);
+        }
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .hover-scale {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hover-scale:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="font-inter bg-slate-50 text-marpe-dark">
+    <!-- Navigation -->
+    <!-- @COMPONENT: Navigation [responsive header with logo and menu] -->
+    <nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="text-2xl font-bold text-marpe-blue">
+                        <i class="fas fa-globe mr-2"></i>Marpe
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="nav-link text-gray-700 hover:text-marpe-blue px-3 py-2 text-sm font-medium transition-colors">Home</a>
+                        <a href="#about" class="nav-link text-gray-700 hover:text-marpe-blue px-3 py-2 text-sm font-medium transition-colors">About</a>
+                        <a href="#collections" class="nav-link text-gray-700 hover:text-marpe-blue px-3 py-2 text-sm font-medium transition-colors">Collections</a>
+                        <a href="#pricing" class="nav-link text-gray-700 hover:text-marpe-blue px-3 py-2 text-sm font-medium transition-colors">Pricing</a>
+                        <a href="#why-marpe" class="nav-link text-gray-700 hover:text-marpe-blue px-3 py-2 text-sm font-medium transition-colors">Why Marpe</a>
+                        <a href="#customers" class="nav-link text-gray-700 hover:text-marpe-blue px-3 py-2 text-sm font-medium transition-colors">Customers</a>
+                        <a href="#contact" class="nav-link text-gray-700 hover:text-marpe-blue px-3 py-2 text-sm font-medium transition-colors">Contact</a>
+                        <a href="#contact" class="bg-marpe-orange text-white px-6 py-2 rounded-full text-sm font-semibold hover:bg-orange-600 transition-colors">Get Started</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button class="mobile-menu-toggle text-gray-700 hover:text-marpe-blue">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- @END_COMPONENT: Navigation -->
+
+    <!-- Hero Section -->
+    <!-- @COMPONENT: Hero [main landing section with floating elements] -->
+    <section id="home" class="relative min-h-screen gradient-bg overflow-hidden">
+        <div class="absolute inset-0">
+            <!-- Floating Elements -->
+            <div class="absolute top-20 left-10 animate-float">
+                <div class="glass-effect rounded-2xl p-6 text-white max-w-xs">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-chart-line text-2xl mr-3"></i>
+                        <div>
+                            <h4 class="font-semibold">24K+ Orders</h4>
+                            <p class="text-sm opacity-90">Successfully sourced</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="absolute top-40 right-10 animate-float" style="animation-delay: -2s;">
+                <div class="glass-effect rounded-2xl p-6 text-white max-w-xs">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-globe-asia text-2xl mr-3"></i>
+                        <div>
+                            <h4 class="font-semibold">50+ Countries</h4>
+                            <p class="text-sm opacity-90">Global supplier network</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="absolute bottom-40 left-20 animate-float" style="animation-delay: -4s;">
+                <div class="glass-effect rounded-2xl p-4 text-white">
+                    <div class="flex items-center">
+                        <i class="fas fa-shipping-fast text-xl mr-2"></i>
+                        <span class="text-sm font-medium">Fast Delivery</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="absolute top-60 right-1/4 animate-float" style="animation-delay: -1s;">
+                <div class="glass-effect rounded-2xl p-4 text-white">
+                    <div class="flex items-center">
+                        <i class="fas fa-shield-alt text-xl mr-2"></i>
+                        <span class="text-sm font-medium">Quality Assured</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-16">
+            <div class="text-center">
+                <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 animate-slide-up">
+                    Global Procurement
+                    <span class="block text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-400">
+                        Simplified
+                    </span>
+                </h1>
+                <p class="text-xl md:text-2xl text-white/90 mb-12 max-w-3xl mx-auto animate-fade-in" style="animation-delay: 0.2s;">
+                    Africa's #1 sourcing and procurement company connecting businesses with trusted manufacturers worldwide.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in" style="animation-delay: 0.4s;">
+                    <button class="bg-marpe-orange text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-orange-600 transition-all hover-scale">
+                        Start Sourcing Now
+                    </button>
+                    <button class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-marpe-blue transition-all">
+                        Learn More
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hero Image/Visual -->
+        <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 animate-fade-in" style="animation-delay: 0.6s;">
+            <!-- A modern office setting showing international business collaboration -->
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" alt="Global business collaboration" class="rounded-t-3xl shadow-2xl" />
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Hero -->
+
+    <!-- About Section -->
+    <!-- @COMPONENT: About [company story and mission] -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="animate-on-scroll">
+                    <h2 class="text-4xl md:text-5xl font-bold text-marpe-dark mb-8">
+                        About <span class="text-marpe-blue">Marpe</span>
+                    </h2>
+                    <div class="space-y-6 text-lg text-marpe-slate leading-relaxed">
+                        <p>
+                            At Marpe, we make global procurement simple. As Africa's #1 sourcing and procurement company, we connect businesses with trusted manufacturers and suppliers across the world including China, Germany, Italy, United States.
+                        </p>
+                        <p>
+                            All you need to do is tell us what product you want and in what quantity. We take care of the rest—sourcing only the best quality goods, negotiating directly with manufacturers, and ensuring smooth delivery right to your doorstep.
+                        </p>
+                        <p>
+                            From everyday household tools to large-scale industrial equipment, our mission is to give African businesses easy access to global markets without the hassle. With us, you can focus on growing your business while we handle the sourcing, quality checks, and logistics.
+                        </p>
+                        <p>
+                            We pride ourselves on reliability, transparency, and unmatched efficiency—helping businesses of all sizes thrive by giving them exactly what they need, when they need it.
+                        </p>
+                        <p class="text-marpe-blue font-semibold text-xl">
+                            Your business. Our sourcing. Worldwide.
+                        </p>
+                    </div>
+                </div>
+                <div class="animate-on-scroll">
+                    <div class="grid grid-cols-2 gap-4">
+                        <!-- Global procurement business scene -->
+                        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" alt="Global procurement business meeting" class="rounded-2xl shadow-lg hover-scale" />
+                        <!-- Manufacturing facilities -->
+                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" alt="Modern manufacturing facility" class="rounded-2xl shadow-lg hover-scale" />
+                        <!-- Business handshake international -->
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" alt="International business handshake" class="rounded-2xl shadow-lg hover-scale" />
+                        <!-- Modern office team -->
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" alt="Modern office team collaboration" class="rounded-2xl shadow-lg hover-scale" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: About -->
+
+    <!-- Featured Collections -->
+    <!-- @COMPONENT: FeaturedCollections [showcase of product categories] -->
+    <section id="collections" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-on-scroll">
+                <h2 class="text-4xl md:text-5xl font-bold text-marpe-dark mb-6">Featured Collections</h2>
+                <p class="text-xl text-marpe-slate max-w-3xl mx-auto">Discover our most popular product categories sourced from trusted manufacturers worldwide</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- @MAP: collections.map(collection => ( -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover-scale animate-on-scroll" data-mock="true">
+                    <!-- Electronics and technology products -->
+                    <img src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250" alt="Electronics collection" class="w-full h-48 object-cover" />
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Electronics & Technology</h3>
+                        <p class="text-marpe-slate mb-4">Smartphones, laptops, IoT devices, and cutting-edge technology solutions</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-marpe-blue">500+ Products</span>
+                            <button class="text-marpe-orange font-semibold hover:text-orange-600">Explore →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover-scale animate-on-scroll" data-mock="true">
+                    <!-- Industrial machinery and equipment -->
+                    <img src="https://pixabay.com/get/g1b4f501393b6073c13cb1ad282dd75305b532917f57f6c2d32d56a1b54c5a2eb7093061dbb2b80fbf44f4808bb25fa767df3251aeb703acc0ec23563614e50bd_1280.jpg" alt="Industrial machinery" class="w-full h-48 object-cover" />
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Industrial Equipment</h3>
+                        <p class="text-marpe-slate mb-4">Heavy machinery, production equipment, and industrial automation systems</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-marpe-blue">300+ Products</span>
+                            <button class="text-marpe-orange font-semibold hover:text-orange-600">Explore →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover-scale animate-on-scroll" data-mock="true">
+                    <!-- Home and lifestyle products -->
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250" alt="Home and lifestyle products" class="w-full h-48 object-cover" />
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Home & Lifestyle</h3>
+                        <p class="text-marpe-slate mb-4">Furniture, appliances, decor, and everyday household essentials</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-marpe-blue">800+ Products</span>
+                            <button class="text-marpe-orange font-semibold hover:text-orange-600">Explore →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover-scale animate-on-scroll" data-mock="true">
+                    <!-- Fashion and apparel -->
+                    <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250" alt="Fashion and apparel" class="w-full h-48 object-cover" />
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Fashion & Apparel</h3>
+                        <p class="text-marpe-slate mb-4">Clothing, accessories, footwear, and textile manufacturing</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-marpe-blue">1200+ Products</span>
+                            <button class="text-marpe-orange font-semibold hover:text-orange-600">Explore →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover-scale animate-on-scroll" data-mock="true">
+                    <!-- Medical and health products -->
+                    <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250" alt="Medical equipment" class="w-full h-48 object-cover" />
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Medical & Health</h3>
+                        <p class="text-marpe-slate mb-4">Medical devices, healthcare equipment, and pharmaceutical supplies</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-marpe-blue">400+ Products</span>
+                            <button class="text-marpe-orange font-semibold hover:text-orange-600">Explore →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover-scale animate-on-scroll" data-mock="true">
+                    <!-- Automotive parts and accessories -->
+                    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250" alt="Automotive parts" class="w-full h-48 object-cover" />
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Automotive</h3>
+                        <p class="text-marpe-slate mb-4">Auto parts, accessories, tools, and automotive manufacturing equipment</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-marpe-blue">600+ Products</span>
+                            <button class="text-marpe-orange font-semibold hover:text-orange-600">Explore →</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- @END_MAP )) -->
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: FeaturedCollections -->
+
+    <!-- Pricing Section -->
+    <!-- @COMPONENT: Pricing [service packages and pricing tiers] -->
+    <section id="pricing" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-on-scroll">
+                <h2 class="text-4xl md:text-5xl font-bold text-marpe-dark mb-6">Transparent Pricing</h2>
+                <p class="text-xl text-marpe-slate max-w-3xl mx-auto">Choose the service level that fits your business needs. No hidden fees, just results.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="bg-slate-50 rounded-2xl p-8 hover-scale animate-on-scroll" data-mock="true">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold mb-4">Starter</h3>
+                        <div class="text-4xl font-bold text-marpe-blue mb-2">5%</div>
+                        <p class="text-marpe-slate">Commission on order value</p>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>Basic sourcing service</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>Quality inspection</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>Standard shipping</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>Email support</span>
+                        </li>
+                    </ul>
+                    <button class="w-full bg-marpe-blue text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                        Get Started
+                    </button>
+                </div>
+
+                <div class="bg-gradient-to-br from-marpe-blue to-marpe-teal rounded-2xl p-8 text-white hover-scale animate-on-scroll relative" data-mock="true">
+                    <div class="absolute top-4 right-4 bg-marpe-orange text-white px-3 py-1 rounded-full text-sm font-semibold">
+                        Most Popular
+                    </div>
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold mb-4">Professional</h3>
+                        <div class="text-4xl font-bold mb-2">8%</div>
+                        <p class="opacity-90">Commission on order value</p>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-white mr-3"></i>
+                            <span>Advanced sourcing service</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-white mr-3"></i>
+                            <span>Comprehensive quality control</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-white mr-3"></i>
+                            <span>Express shipping options</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-white mr-3"></i>
+                            <span>Priority phone support</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-white mr-3"></i>
+                            <span>Dedicated account manager</span>
+                        </li>
+                    </ul>
+                    <button class="w-full bg-white text-marpe-blue py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                        Get Started
+                    </button>
+                </div>
+
+                <div class="bg-slate-50 rounded-2xl p-8 hover-scale animate-on-scroll" data-mock="true">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold mb-4">Enterprise</h3>
+                        <div class="text-4xl font-bold text-marpe-blue mb-2">Custom</div>
+                        <p class="text-marpe-slate">Tailored solutions</p>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>White-label sourcing</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>Custom quality standards</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>Bulk shipping discounts</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>24/7 dedicated support</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>API integration</span>
+                        </li>
+                    </ul>
+                    <button class="w-full bg-marpe-blue text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                        Contact Sales
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Pricing -->
+
+    <!-- Why Marpe Section -->
+    <!-- @COMPONENT: WhyMarpe [benefits and competitive advantages] -->
+    <section id="why-marpe" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-on-scroll">
+                <h2 class="text-4xl md:text-5xl font-bold text-marpe-dark mb-6">Why Choose Marpe</h2>
+                <p class="text-xl text-marpe-slate max-w-3xl mx-auto">We're not just another procurement company. Here's what makes us different.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center animate-on-scroll hover-scale" data-mock="true">
+                    <div class="w-16 h-16 bg-gradient-to-br from-marpe-blue to-marpe-teal rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-shield-alt text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Quality Guaranteed</h3>
+                    <p class="text-marpe-slate">Rigorous quality control processes ensure you receive only the best products from verified suppliers.</p>
+                </div>
+
+                <div class="text-center animate-on-scroll hover-scale" data-mock="true">
+                    <div class="w-16 h-16 bg-gradient-to-br from-marpe-orange to-yellow-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-clock text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Fast Turnaround</h3>
+                    <p class="text-marpe-slate">Average sourcing time of 48 hours with express options for urgent requirements.</p>
+                </div>
+
+                <div class="text-center animate-on-scroll hover-scale" data-mock="true">
+                    <div class="w-16 h-16 bg-gradient-to-br from-purple-600 to-pink-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-handshake text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Trusted Network</h3>
+                    <p class="text-marpe-slate">Access to over 10,000 verified manufacturers and suppliers across 50+ countries.</p>
+                </div>
+
+                <div class="text-center animate-on-scroll hover-scale" data-mock="true">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-600 to-teal-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-dollar-sign text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Cost Effective</h3>
+                    <p class="text-marpe-slate">Save up to 40% on procurement costs through our bulk purchasing power and negotiation expertise.</p>
+                </div>
+            </div>
+
+            <div class="mt-20 grid lg:grid-cols-2 gap-16 items-center">
+                <div class="animate-on-scroll">
+                    <!-- Global procurement success story visualization -->
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400" alt="Global business analytics dashboard" class="rounded-2xl shadow-2xl" />
+                </div>
+                <div class="animate-on-scroll">
+                    <h3 class="text-3xl font-bold text-marpe-dark mb-6">Proven Track Record</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-marpe-blue rounded-xl flex items-center justify-center mr-4">
+                                <i class="fas fa-chart-line text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg">24,000+ Orders Completed</h4>
+                                <p class="text-marpe-slate">Successfully sourced and delivered to African businesses</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-marpe-teal rounded-xl flex items-center justify-center mr-4">
+                                <i class="fas fa-star text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg">98% Customer Satisfaction</h4>
+                                <p class="text-marpe-slate">Consistently rated as the top procurement service</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-marpe-orange rounded-xl flex items-center justify-center mr-4">
+                                <i class="fas fa-globe text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg">50+ Countries Served</h4>
+                                <p class="text-marpe-slate">Expanding across Africa and beyond</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: WhyMarpe -->
+
+    <!-- Customers Section -->
+    <!-- @COMPONENT: Customers [testimonials and success stories] -->
+    <section id="customers" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-on-scroll">
+                <h2 class="text-4xl md:text-5xl font-bold text-marpe-dark mb-6">What Our Customers Say</h2>
+                <p class="text-xl text-marpe-slate max-w-3xl mx-auto">Don't just take our word for it. Here's what businesses across Africa are saying about Marpe.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- @MAP: testimonials.map(testimonial => ( -->
+                <div class="bg-slate-50 rounded-2xl p-8 hover-scale animate-on-scroll" data-mock="true">
+                    <div class="flex items-center mb-6">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-marpe-dark mb-6 italic">"Marpe transformed our procurement process. What used to take weeks now happens in days, and the quality is consistently excellent."</p>
+                    <div class="flex items-center">
+                        <!-- Professional business person photo -->
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100" alt="Customer testimonial" class="w-12 h-12 rounded-full mr-4" />
+                        <div>
+                            <h4 class="font-semibold" data-bind="testimonial.name">James Okoye</h4>
+                            <p class="text-sm text-marpe-slate" data-bind="testimonial.position">CEO, TechFlow Lagos</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 rounded-2xl p-8 hover-scale animate-on-scroll" data-mock="true">
+                    <div class="flex items-center mb-6">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-marpe-dark mb-6 italic">"The transparency and communication throughout the process was outstanding. We always knew exactly where our order stood."</p>
+                    <div class="flex items-center">
+                        <!-- Professional businesswoman photo -->
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100" alt="Customer testimonial" class="w-12 h-12 rounded-full mr-4" />
+                        <div>
+                            <h4 class="font-semibold" data-bind="testimonial.name">Sarah Mbeki</h4>
+                            <p class="text-sm text-marpe-slate" data-bind="testimonial.position">Operations Director, AfriMed</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 rounded-2xl p-8 hover-scale animate-on-scroll" data-mock="true">
+                    <div class="flex items-center mb-6">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-marpe-dark mb-6 italic">"Cost savings were immediate and significant. Marpe's negotiation skills with suppliers are unmatched."</p>
+                    <div class="flex items-center">
+                        <!-- Professional business executive photo -->
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100" alt="Customer testimonial" class="w-12 h-12 rounded-full mr-4" />
+                        <div>
+                            <h4 class="font-semibold" data-bind="testimonial.name">Michael Adebayo</h4>
+                            <p class="text-sm text-marpe-slate" data-bind="testimonial.position">Founder, GreenTech Solutions</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 rounded-2xl p-8 hover-scale animate-on-scroll" data-mock="true">
+                    <div class="flex items-center mb-6">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-marpe-dark mb-6 italic">"Their quality control process caught issues before they became problems. That attention to detail is why we keep coming back."</p>
+                    <div class="flex items-center">
+                        <!-- Professional woman in business setting -->
+                        <img src="https://pixabay.com/get/gf6e8776140d58232106dcf1e624836d4f84c43f187677cff5b77bdbad027964e384cb1f05de65cd3a848a040df70a17a64ad1b584ee4e70d98736e7a0f7e04fe_1280.jpg" alt="Customer testimonial" class="w-12 h-12 rounded-full mr-4" />
+                        <div>
+                            <h4 class="font-semibold" data-bind="testimonial.name">Fatima Al-Rashid</h4>
+                            <p class="text-sm text-marpe-slate" data-bind="testimonial.position">Procurement Manager, BuildCorp</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 rounded-2xl p-8 hover-scale animate-on-scroll" data-mock="true">
+                    <div class="flex items-center mb-6">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-marpe-dark mb-6 italic">"From small orders to bulk procurement, Marpe handles everything with the same level of professionalism and efficiency."</p>
+                    <div class="flex items-center">
+                        <!-- Professional man in modern office -->
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100" alt="Customer testimonial" class="w-12 h-12 rounded-full mr-4" />
+                        <div>
+                            <h4 class="font-semibold" data-bind="testimonial.name">David Kamau</h4>
+                            <p class="text-sm text-marpe-slate" data-bind="testimonial.position">Supply Chain Lead, EastAfrica Retail</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 rounded-2xl p-8 hover-scale animate-on-scroll" data-mock="true">
+                    <div class="flex items-center mb-6">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-marpe-dark mb-6 italic">"The peace of mind knowing experts are handling our international sourcing allows us to focus on what we do best - growing our business."</p>
+                    <div class="flex items-center">
+                        <!-- Professional business woman -->
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100" alt="Customer testimonial" class="w-12 h-12 rounded-full mr-4" />
+                        <div>
+                            <h4 class="font-semibold" data-bind="testimonial.name">Amara Diallo</h4>
+                            <p class="text-sm text-marpe-slate" data-bind="testimonial.position">Managing Director, Sahel Industries</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- @END_MAP )) -->
+            </div>
+
+            <div class="text-center mt-12 animate-on-scroll">
+                <button class="bg-marpe-blue text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-700 transition-colors hover-scale">
+                    View All Testimonials
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Customers -->
+
+    <!-- Contact Section -->
+    <!-- @COMPONENT: Contact [contact form and information] -->
+    <section id="contact" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-on-scroll">
+                <h2 class="text-4xl md:text-5xl font-bold text-marpe-dark mb-6">Get Started Today</h2>
+                <p class="text-xl text-marpe-slate max-w-3xl mx-auto">Ready to simplify your procurement process? Let's discuss your sourcing needs.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-16">
+                <div class="animate-on-scroll">
+                    <h3 class="text-2xl font-bold text-marpe-dark mb-6">Contact Information</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-center" data-mock="true">
+                            <div class="w-12 h-12 bg-marpe-blue rounded-xl flex items-center justify-center mr-4">
+                                <i class="fas fa-map-marker-alt text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Address</h4>
+                                <p class="text-marpe-slate">123 Victoria Island, Lagos, Nigeria</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center" data-mock="true">
+                            <div class="w-12 h-12 bg-marpe-teal rounded-xl flex items-center justify-center mr-4">
+                                <i class="fas fa-phone text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Phone</h4>
+                                <p class="text-marpe-slate">+234 (0) 123 456 7890</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center" data-mock="true">
+                            <div class="w-12 h-12 bg-marpe-orange rounded-xl flex items-center justify-center mr-4">
+                                <i class="fas fa-envelope text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Email</h4>
+                                <p class="text-marpe-slate">hello@marpe.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center" data-mock="true">
+                            <div class="w-12 h-12 bg-purple-600 rounded-xl flex items-center justify-center mr-4">
+                                <i class="fas fa-clock text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Business Hours</h4>
+                                <p class="text-marpe-slate">Mon - Fri: 9:00 AM - 6:00 PM WAT</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="animate-on-scroll">
+                    <form class="bg-white rounded-2xl p-8 shadow-lg" data-event="submit:handleContactSubmit" data-implementation="Should validate form and send email">
+                        <h3 class="text-2xl font-bold text-marpe-dark mb-6">Send us a message</h3>
+                        <div class="grid md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-marpe-dark mb-2">First Name</label>
+                                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-marpe-blue focus:border-transparent" data-bind="form.firstName" placeholder="John" />
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-marpe-dark mb-2">Last Name</label>
+                                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-marpe-blue focus:border-transparent" data-bind="form.lastName" placeholder="Doe" />
+                            </div>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-marpe-dark mb-2">Email</label>
+                                <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-marpe-blue focus:border-transparent" data-bind="form.email" placeholder="john@company.com" />
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-marpe-dark mb-2">Phone</label>
+                                <input type="tel" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-marpe-blue focus:border-transparent" data-bind="form.phone" placeholder="+1 (555) 123-4567" />
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-sm font-semibold text-marpe-dark mb-2">Company</label>
+                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-marpe-blue focus:border-transparent" data-bind="form.company" placeholder="Your Company Name" />
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-sm font-semibold text-marpe-dark mb-2">Message</label>
+                            <textarea rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-marpe-blue focus:border-transparent" data-bind="form.message" placeholder="Tell us about your sourcing needs..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-marpe-blue text-white py-4 rounded-xl text-lg font-semibold hover:bg-blue-700 transition-colors">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Contact -->
+
+    <!-- Footer -->
+    <!-- @COMPONENT: Footer [company details and links] -->
+    <footer class="bg-marpe-dark text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="text-2xl font-bold mb-6">
+                        <i class="fas fa-globe mr-2"></i>Marpe
+                    </div>
+                    <p class="text-gray-300 mb-6">Africa's #1 sourcing and procurement company connecting businesses with trusted manufacturers worldwide.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-marpe-blue rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-marpe-teal rounded-lg flex items-center justify-center hover:bg-teal-600 transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-marpe-orange rounded-lg flex items-center justify-center hover:bg-orange-600 transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-purple-600 rounded-lg flex items-center justify-center hover:bg-purple-700 transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div data-mock="true">
+                    <h3 class="text-lg font-semibold mb-6">Services</h3>
+                    <ul class="space-y-3 text-gray-300">
+                        <li><a href="#" class="hover:text-white transition-colors">Product Sourcing</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Quality Control</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Logistics Management</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Supplier Verification</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Custom Manufacturing</a></li>
+                    </ul>
+                </div>
+
+                <div data-mock="true">
+                    <h3 class="text-lg font-semibold mb-6">Company</h3>
+                    <ul class="space-y-3 text-gray-300">
+                        <li><a href="#about" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#customers" class="hover:text-white transition-colors">Testimonials</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Careers</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">News & Media</a></li>
+                        <li><a href="#contact" class="hover:text-white transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div data-mock="true">
+                    <h3 class="text-lg font-semibold mb-6">Contact Info</h3>
+                    <div class="space-y-3 text-gray-300">
+                        <p><i class="fas fa-map-marker-alt mr-2"></i>123 Victoria Island, Lagos, Nigeria</p>
+                        <p><i class="fas fa-phone mr-2"></i>+234 (0) 123 456 7890</p>
+                        <p><i class="fas fa-envelope mr-2"></i>hello@marpe.com</p>
+                        <p><i class="fas fa-clock mr-2"></i>Mon - Fri: 9:00 AM - 6:00 PM</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 pt-8 mt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-300 mb-4 md:mb-0">&copy; 2024 Marpe. All rights reserved.</p>
+                    <div class="flex space-x-6 text-gray-300">
+                        <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                        <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                        <a href="#" class="hover:text-white transition-colors">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- @END_COMPONENT: Footer -->
+
+    <script>
+        (function() {
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId.startsWith('#')) {
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            targetElement.scrollIntoView({ 
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    }
+                });
+            });
+
+            // Mobile menu toggle
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            if (mobileMenuToggle) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    // TODO: Implement mobile menu toggle functionality
+                    console.log('Mobile menu toggle clicked');
+                });
+            }
+
+            // Animate elements on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all elements with animate-on-scroll class
+            document.querySelectorAll('.animate-on-scroll').forEach(element => {
+                observer.observe(element);
+            });
+
+            // Form submission handler
+            const contactForm = document.querySelector('form[data-event*="handleContactSubmit"]');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    // TODO: Implement form validation and submission logic
+                    console.log('Contact form submitted');
+                    alert('Thank you for your message! We\'ll get back to you soon.');
+                });
+            }
+
+            // Add some dynamic interactions to floating elements
+            const floatingElements = document.querySelectorAll('.animate-float');
+            floatingElements.forEach((element, index) => {
+                element.style.animationDelay = `${index * 0.5}s`;
+                
+                // Add subtle hover effects
+                element.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.05)';
+                    this.style.transition = 'transform 0.3s ease';
+                });
+                
+                element.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+
+            // Add active nav link highlighting
+            function updateActiveNavLink() {
+                const sections = document.querySelectorAll('section[id]');
+                const navLinks = document.querySelectorAll('.nav-link');
+                
+                let currentSection = '';
+                sections.forEach(section => {
+                    const rect = section.getBoundingClientRect();
+                    if (rect.top <= 100 && rect.bottom >= 100) {
+                        currentSection = section.id;
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    const href = link.getAttribute('href');
+                    if (href === `#${currentSection}`) {
+                        link.classList.add('text-marpe-blue');
+                        link.classList.remove('text-gray-700');
+                    } else {
+                        link.classList.remove('text-marpe-blue');
+                        link.classList.add('text-gray-700');
+                    }
+                });
+            }
+
+            // Update active nav on scroll
+            window.addEventListener('scroll', updateActiveNavLink);
+            updateActiveNavLink(); // Initial call
+
+        })();
+    </script>
+</body>
+</html>

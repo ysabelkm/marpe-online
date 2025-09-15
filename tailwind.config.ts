@@ -70,10 +70,11 @@ export default {
         "marpe-light": "var(--marpe-light)",
       },
       fontFamily: {
-        sans: ["var(--font-sans)"],
-        serif: ["var(--font-serif)"],
-        mono: ["var(--font-mono)"],
-        inter: ["Inter", "sans-serif"],
+        sans: ["var(--font-sans)", "Geist", "sans-serif"],
+        serif: ["var(--font-serif)", "Georgia", "serif"],
+        mono: ["var(--font-mono)", "Geist Mono", "monospace"],
+        geist: ["Geist", "sans-serif"],
+        "geist-mono": ["Geist Mono", "monospace"],
       },
       keyframes: {
         "accordion-down": {

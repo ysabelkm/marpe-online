@@ -1,109 +1,192 @@
-import { ArrowRight, BarChart3, Globe, Shield, Truck } from "lucide-react";
+import { Trophy, Users, TrendingUp, Brain, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import FloatingCard from "./floating-card";
+import { useEffect, useState } from "react";
 
 export default function Hero() {
-  return (
-    <section className="relative min-h-screen bg-gray-50 overflow-hidden">
-      {/* Subtle background elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 right-20 w-64 h-64 bg-gradient-to-br from-marpe-blue/5 to-marpe-teal/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-32 left-32 w-48 h-48 bg-gradient-to-tr from-marpe-orange/5 to-marpe-blue/5 rounded-full blur-2xl"></div>
-      </div>
+  const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const [currentText, setCurrentText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
-        <div className="grid lg:grid-cols-2 gap-16 items-center min-h-[80vh]">
+  
+  const words = ["Easy.", "Efficient.", "Secure.", "Fast."];
+  const currentWord = words[currentWordIndex];
+  
+  useEffect(() => {
+    const typeSpeed = isDeleting ? 50 : 100;
+    const deleteSpeed = 30;
+    const pauseTime = 1500;
+    
+    const typeWriter = () => {
+      if (!isDeleting) {
+        if (currentText.length < currentWord.length) {
+          setTimeout(() => {
+            setCurrentText(currentWord.slice(0, currentText.length + 1));
+          }, typeSpeed);
+        } else {
+          setTimeout(() => {
+            setIsDeleting(true);
+          }, pauseTime);
+        }
+      } else {
+        if (currentText.length > 0) {
+          setTimeout(() => {
+            setCurrentText(currentWord.slice(0, currentText.length - 1));
+          }, deleteSpeed);
+        } else {
+          setIsDeleting(false);
+          setCurrentWordIndex((prevIndex) => (prevIndex + 1) % words.length);
+        }
+      }
+    };
+    
+    const timer = setTimeout(typeWriter, 100);
+    return () => clearTimeout(timer);
+  }, [currentText, isDeleting, currentWord, currentWordIndex, words.length]);
+
+
+
+  return (
+    <>
+    <section className="relative min-h-[70vh] bg-gradient-to-br from-blue-50 to-white overflow-hidden">
+
+      
+      {/* Floating geometric shapes */}
+      <div className="absolute top-20 right-20 w-64 h-64 bg-gradient-to-br from-blue-200/20 to-purple-200/20 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-32 left-32 w-48 h-48 bg-gradient-to-tr from-blue-100/30 to-cyan-100/30 rounded-full blur-2xl"></div>
+      
+      {/* Additional geometric shapes for depth */}
+      <div className="absolute top-40 left-1/4 w-32 h-32 bg-gradient-to-br from-blue-100/20 to-indigo-100/20 rounded-lg blur-2xl transform rotate-12"></div>
+      <div className="absolute bottom-20 right-1/3 w-24 h-24 bg-gradient-to-tr from-cyan-100/25 to-blue-100/25 rounded-full blur-xl"></div>
+      <div className="absolute top-1/2 left-1/3 w-40 h-40 bg-gradient-to-br from-purple-100/15 to-blue-100/15 rounded-full blur-3xl"></div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-4">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start lg:items-start min-h-[50vh] pt-4 lg:pt-0">
           {/* Left Content */}
-          <div className="animate-slide-up">
-            <div className="mb-6">
-              <span className="inline-block px-4 py-2 bg-marpe-blue/10 text-marpe-blue text-sm font-semibold rounded-full">
-                PROCUREMENT PLATFORM 2024
-              </span>
-            </div>
-            <h1 className="text-5xl md:text-6xl font-bold text-marpe-dark mb-6 leading-tight" data-testid="text-hero-title">
-              Explore, source,
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-marpe-blue to-marpe-teal">
-                repeat again.
+          <div className="animate-slide-up pt-12 lg:pt-20">
+            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight" data-testid="text-hero-title">
+              China Procurement
+              <span className="block text-marpe-orange drop-shadow-lg">
+                Made <span className="typewriter-text">{currentText}</span>
               </span>
             </h1>
             <p 
-              className="text-xl text-marpe-slate mb-8 max-w-lg leading-relaxed" 
+              className="text-xl text-gray-600 mb-8 max-w-lg leading-relaxed" 
               data-testid="text-hero-subtitle"
             >
-              Marpe is a strong force behind the dreams of emerging businesses, a trusted partner for industry leaders.
+              Boost efficiency, enhance supplier relationships, and streamline operations with our cutting-edge procurement technology.
             </p>
-            <Link href="/contact">
+            
+            {/* Email Input and CTA */}
+            <div className="flex flex-col sm:flex-row gap-4 mb-6">
+              <div className="relative flex-1">
+                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+                <input 
+                  type="email" 
+                  placeholder="Enter your email"
+                  className="w-full pl-10 pr-4 py-4 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                />
+              </div>
               <Button 
                 size="lg"
-                className="bg-marpe-dark text-white px-8 py-4 text-lg font-semibold hover:bg-marpe-dark/90 rounded-full shadow-lg"
+                className="bg-blue-600 text-white px-8 py-4 text-lg font-semibold hover:bg-blue-700 rounded-lg shadow-lg transition-colors"
                 data-testid="button-start-sourcing"
               >
-                Start free trial
+                Get Started
               </Button>
-            </Link>
+            </div>
+            <p className="text-sm text-gray-500">
+              30 day free trial, no credit card required
+            </p>
           </div>
 
-          {/* Right Content - Organized UI Elements */}
-          <div className="relative animate-fade-in" style={{ animationDelay: "0.3s" }}>
-            {/* Main Product Card */}
-            <div className="absolute top-0 right-0 w-64 bg-green-100 rounded-2xl p-6 shadow-lg z-20">
-              <div className="w-full h-32 bg-green-200 rounded-xl mb-4 flex items-center justify-center">
-                <Globe className="h-16 w-16 text-marpe-teal" />
-              </div>
-              <h3 className="font-semibold text-marpe-dark mb-1" data-testid="text-product-name">Nike Zoom Pegasus</h3>
-              <p className="text-2xl font-bold text-marpe-dark" data-testid="text-product-price">$48.00</p>
-              <div className="mt-3">
-                <Button size="sm" className="bg-marpe-dark text-white text-xs px-4 py-2 rounded-full">
-                  Order
-                </Button>
-              </div>
-            </div>
-
-            {/* Stats Card */}
-            <div className="absolute top-20 left-0 bg-white rounded-2xl p-6 shadow-lg z-10">
-              <div className="flex items-center mb-4">
-                <BarChart3 className="h-8 w-8 text-marpe-blue mr-3" />
-                <div>
-                  <h4 className="font-semibold text-marpe-dark" data-testid="text-orders-count">24K+</h4>
-                  <p className="text-sm text-marpe-slate" data-testid="text-orders-description">Orders completed</p>
+          {/* Right Content - Modern UI Elements */}
+          <div className="relative animate-fade-in lg:min-h-[600px] pt-8" style={{ animationDelay: "0.3s" }}>
+            {/* Main Smartphone Mockup */}
+            <div className="relative lg:absolute lg:top-0 lg:right-0 w-full max-w-sm lg:w-80 mx-auto lg:mx-0 bg-white rounded-3xl p-4 shadow-2xl z-20 border border-gray-100">
+              <div className="bg-gray-900 rounded-2xl p-4 h-[600px] lg:h-[500px]">
+                <div className="flex items-center mb-4">
+                  <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                    <Brain className="h-4 w-4 text-white" />
+                  </div>
+                  <span className="ml-2 text-white font-semibold">Marpe® Agent</span>
+                </div>
+                <div className="space-y-3">
+                  <div className="bg-blue-600 text-white p-3 rounded-lg max-w-xs">
+                    <p className="text-sm">Hi, welcome to Marpe. How can I help?</p>
+                  </div>
+                  <div className="bg-gray-700 text-white p-3 rounded-lg max-w-xs ml-auto">
+                    <p className="text-sm">I need industrial printers for my company</p>
+                  </div>
+                  <div className="bg-gray-700 text-white p-3 rounded-lg max-w-xs ml-auto">
+                    <div className="flex flex-col space-y-2">
+                      <p className="text-sm">Here's what I'm looking for:</p>
+                      <div className="bg-gray-600 rounded-lg p-2">
+                        <img 
+                          src="/industrial-printer.jpg" 
+                          alt="Industrial printer" 
+                          className="w-full h-20 object-cover rounded"
+                          onError={(e) => {
+                            console.error('Image failed to load:', e);
+                            e.currentTarget.style.display = 'none';
+                          }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-blue-600 text-white p-3 rounded-lg max-w-xs">
+                    <p className="text-sm">Perfect! I can help you source industrial printers. What specifications do you need?</p>
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/* Success Metric */}
-            <div className="absolute top-40 right-20 bg-marpe-teal rounded-2xl p-8 text-white shadow-lg">
-              <div className="text-center">
-                <h2 className="text-4xl font-bold mb-2" data-testid="text-success-metric">50x</h2>
-                <p className="text-sm opacity-90" data-testid="text-success-description">More customers every month</p>
+            {/* Floating Achievement Card */}
+            <div className="hidden lg:block absolute top-4 left-0 bg-white rounded-2xl p-4 shadow-lg z-10 border border-gray-100">
+              <div className="flex items-center">
+                <Trophy className="h-6 w-6 text-yellow-500 mr-2" />
+                <div>
+                  <p className="text-sm font-semibold text-gray-900">Africa's #1 Procurement<br/>Platform</p>
+                  <p className="text-xs text-gray-500">Highly Efficient and Time-Bound</p>
+                </div>
               </div>
             </div>
 
-            {/* Person Image */}
-            <div className="absolute bottom-0 left-10 w-48 h-56 rounded-2xl overflow-hidden shadow-lg">
-              <img 
-                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=350" 
-                alt="Professional woman working" 
-                className="w-full h-full object-cover"
-                data-testid="img-professional"
-              />
+            {/* Performance Card */}
+            <div className="hidden lg:block absolute top-32 left-8 bg-white rounded-2xl p-4 shadow-lg z-10 border border-gray-100">
+              <div className="flex items-center">
+                <TrendingUp className="h-6 w-6 text-blue-500 mr-2" />
+                <div>
+                  <p className="text-sm font-semibold text-gray-900">Fast Shipping</p>
+                  <p className="text-lg font-bold text-blue-600">10x</p>
+                  <p className="text-xs text-gray-500">Faster sourcing</p>
+                </div>
+              </div>
             </div>
 
-            {/* Quality Badge */}
-            <div className="absolute bottom-10 right-4 bg-white rounded-xl p-4 shadow-lg flex items-center">
-              <Shield className="h-6 w-6 text-green-500 mr-2" />
-              <span className="text-sm font-medium text-marpe-dark" data-testid="text-quality-badge">Quality Assured</span>
+            {/* Users Card */}
+            <div className="hidden lg:block absolute top-60 left-0 bg-white rounded-2xl p-4 shadow-lg z-10 border border-gray-100">
+              <div className="flex items-center">
+                <Users className="h-6 w-6 text-green-500 mr-3" />
+                <div>
+                  <p className="text-sm font-semibold text-gray-900">500K+</p>
+                  <p className="text-xs text-gray-500">SATISFIED CUSTOMERS</p>
+                </div>
+              </div>
             </div>
 
-            {/* Delivery Badge */}
-            <div className="absolute top-60 left-20 bg-marpe-orange rounded-xl p-3 text-white shadow-lg flex items-center">
-              <Truck className="h-5 w-5 mr-2" />
-              <span className="text-sm font-medium" data-testid="text-delivery-badge">Fast Delivery</span>
-            </div>
+            {/* Connecting Lines */}
+            <svg className="absolute top-0 left-0 w-full h-full pointer-events-none z-5">
+              <line x1="20%" y1="15%" x2="60%" y2="25%" stroke="#e2e8f0" strokeWidth="2" strokeDasharray="5,5"/>
+              <line x1="25%" y1="35%" x2="65%" y2="45%" stroke="#e2e8f0" strokeWidth="2" strokeDasharray="5,5"/>
+              <line x1="30%" y1="55%" x2="70%" y2="65%" stroke="#e2e8f0" strokeWidth="2" strokeDasharray="5,5"/>
+            </svg>
           </div>
         </div>
       </div>
 
     </section>
+    </>
   );
 }

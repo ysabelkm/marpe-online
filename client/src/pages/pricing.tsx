@@ -1,61 +1,28 @@
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { CheckCircle } from "lucide-react";
 
 export default function Pricing() {
-  const plans = [
-    {
-      name: "Starter",
-      price: "5%",
-      description: "Commission on order value",
-      features: [
-        "Basic sourcing service",
-        "Quality inspection",
-        "Standard shipping",
-        "Email support"
-      ],
-      buttonText: "Get Started",
-      popular: false
-    },
-    {
-      name: "Professional",
-      price: "8%",
-      description: "Commission on order value",
-      features: [
-        "Advanced sourcing service",
-        "Comprehensive quality control",
-        "Express shipping options",
-        "Priority phone support",
-        "Dedicated account manager"
-      ],
-      buttonText: "Get Started",
-      popular: true
-    },
-    {
-      name: "Enterprise",
-      price: "Custom",
-      description: "Tailored solutions",
-      features: [
-        "White-label sourcing",
-        "Custom quality standards",
-        "Bulk shipping discounts",
-        "24/7 dedicated support",
-        "API integration"
-      ],
-      buttonText: "Contact Sales",
-      popular: false
-    }
-  ];
 
   return (
     <div className="min-h-screen bg-slate-50">
       <Navigation />
       
       {/* Hero Section */}
-      <section className="pt-24 pb-16 bg-gradient-to-br from-marpe-blue to-marpe-teal">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section 
+        className="pt-24 pb-16 relative"
+        style={{
+          backgroundImage: "url('/pricing.webp')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat"
+        }}
+      >
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-black/60"></div>
+        
+        {/* Content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-6" data-testid="text-page-title">
             Transparent Pricing
           </h1>
@@ -65,57 +32,135 @@ export default function Pricing() {
         </div>
       </section>
 
-      {/* Pricing Plans */}
-      <section className="py-20">
+      {/* Commitment Fee Section */}
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {plans.map((plan, index) => (
-              <Card 
-                key={index} 
-                className={`p-8 hover-scale relative ${
-                  plan.popular 
-                    ? "bg-gradient-to-br from-marpe-blue to-marpe-teal text-white" 
-                    : "bg-slate-50"
-                }`}
-              >
-                {plan.popular && (
-                  <div className="absolute top-4 right-4 bg-marpe-orange text-white px-3 py-1 rounded-full text-sm font-semibold">
-                    Most Popular
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-marpe-dark mb-4" data-testid="text-commitment-title">
+              Commitment Fee Structure
+            </h2>
+            <p className="text-lg text-marpe-slate max-w-3xl mx-auto" data-testid="text-commitment-subtitle">
+              A one-time commitment fee ensures dedicated service and priority handling for your procurement needs
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {/* Commercial Products */}
+            <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8 text-center border border-blue-200">
+              <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold text-marpe-dark mb-4" data-testid="text-commercial-title">
+                Commercial Products
+              </h3>
+              <div className="text-4xl font-bold text-blue-600 mb-4" data-testid="text-commercial-price">
+                ₦20,000
+              </div>
+              <p className="text-marpe-slate mb-6" data-testid="text-commercial-description">
+                For household items, consumer goods, electronics, clothing, and general merchandise
+              </p>
+              <ul className="text-left space-y-2 text-sm text-marpe-slate">
+                <li className="flex items-center">
+                  <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                  Standard sourcing and quality control
+                </li>
+                <li className="flex items-center">
+                  <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                  Regular shipping options
+                </li>
+                <li className="flex items-center">
+                  <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                  Email and phone support
+                </li>
+              </ul>
+            </div>
+
+            {/* Industrial Equipment */}
+            <div className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl p-8 text-center border border-orange-200">
+              <div className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold text-marpe-dark mb-4" data-testid="text-industrial-title">
+                Industrial Equipment
+              </h3>
+              <div className="text-4xl font-bold text-orange-600 mb-4" data-testid="text-industrial-price">
+                ₦50,000
+              </div>
+              <p className="text-marpe-slate mb-6" data-testid="text-industrial-description">
+                For heavy machinery, production equipment, industrial tools, and large-scale manufacturing items
+              </p>
+              <ul className="text-left space-y-2 text-sm text-marpe-slate">
+                <li className="flex items-center">
+                  <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                  Advanced sourcing and factory vetting
+                </li>
+                <li className="flex items-center">
+                  <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                  Comprehensive quality inspection
+                </li>
+                <li className="flex items-center">
+                  <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                  Specialized logistics and handling
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Commission Structure */}
+      <section className="py-20 bg-slate-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-marpe-dark mb-4" data-testid="text-commission-title">
+              Procurement Commission
+            </h2>
+            <p className="text-lg text-marpe-slate max-w-2xl mx-auto" data-testid="text-commission-subtitle">
+              Our transparent commission structure ensures you know exactly what you'll pay
+            </p>
+          </div>
+          
+          <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200">
+            <div className="text-center">
+              <div className="w-20 h-20 bg-gradient-to-br from-marpe-blue to-marpe-teal rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold text-marpe-dark mb-4" data-testid="text-commission-rate">
+                10% Commission
+              </h3>
+              <p className="text-xl text-marpe-slate mb-6" data-testid="text-commission-description">
+                Of the total cost of goods
+              </p>
+              <div className="bg-gray-50 rounded-xl p-6 mb-8">
+                <h4 className="text-lg font-semibold text-marpe-dark mb-4" data-testid="text-example-title">
+                  Example Calculation
+                </h4>
+                <div className="space-y-2 text-left">
+                  <div className="flex justify-between">
+                    <span className="text-marpe-slate">Total cost of goods:</span>
+                    <span className="font-semibold">₦100,000</span>
                   </div>
-                )}
-                <CardContent className="p-0">
-                  <div className="text-center mb-8">
-                    <h3 className="text-2xl font-bold mb-4" data-testid={`text-plan-name-${index}`}>
-                      {plan.name}
-                    </h3>
-                    <div className="text-4xl font-bold mb-2" data-testid={`text-plan-price-${index}`}>
-                      {plan.price}
+                  <div className="flex justify-between">
+                    <span className="text-marpe-slate">Our commission (10%):</span>
+                    <span className="font-semibold text-marpe-blue">₦10,000</span>
                     </div>
-                    <p className={plan.popular ? "opacity-90" : "text-marpe-slate"} data-testid={`text-plan-description-${index}`}>
-                      {plan.description}
-                    </p>
+                  <hr className="my-2" />
+                  <div className="flex justify-between text-lg font-bold">
+                    <span>Total amount you pay:</span>
+                    <span className="text-marpe-dark">₦110,000</span>
                   </div>
-                  <ul className="space-y-4 mb-8">
-                    {plan.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center">
-                        <CheckCircle className={`h-5 w-5 mr-3 ${plan.popular ? "text-white" : "text-green-500"}`} />
-                        <span data-testid={`text-plan-feature-${index}-${featureIndex}`}>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <Button 
-                    className={`w-full py-3 font-semibold ${
-                      plan.popular 
-                        ? "bg-white text-marpe-blue hover:bg-gray-100" 
-                        : "bg-marpe-blue text-white hover:bg-blue-700"
-                    }`}
-                    data-testid={`button-plan-${index}`}
-                  >
-                    {plan.buttonText}
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
+                </div>
+              </div>
+              <p className="text-sm text-marpe-slate" data-testid="text-commission-note">
+                * Commission is calculated on the total cost of goods before any additional services
+              </p>
+            </div>
           </div>
         </div>
       </section>

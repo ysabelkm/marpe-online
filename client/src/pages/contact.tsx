@@ -74,8 +74,20 @@ export default function Contact() {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="pt-24 pb-16 bg-gradient-to-br from-marpe-blue to-marpe-teal">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section 
+        className="pt-24 pb-16 relative"
+        style={{
+          backgroundImage: "url('/Contact-us.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat"
+        }}
+      >
+        {/* Black Overlay */}
+        <div className="absolute inset-0 bg-black/60"></div>
+        
+        {/* Content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-6" data-testid="text-page-title">
             Get Started Today
           </h1>
@@ -86,13 +98,13 @@ export default function Contact() {
       </section>
 
       {/* Contact Content */}
-      <section className="py-20">
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16">
             {/* Contact Information */}
             <div>
-              <h3 className="text-2xl font-bold text-marpe-dark mb-6" data-testid="text-contact-info-title">
-                Contact Information
+              <h3 className="text-3xl font-bold text-marpe-dark mb-8" data-testid="text-contact-info-title">
+                Get in Touch
               </h3>
               <div className="space-y-6">
                 <div className="flex items-center">
@@ -100,151 +112,143 @@ export default function Contact() {
                     <MapPin className="h-6 w-6 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-semibold" data-testid="text-address-label">Address</h4>
-                    <p className="text-marpe-slate" data-testid="text-address">123 Victoria Island, Lagos, Nigeria</p>
+                    <h4 className="font-semibold text-marpe-dark" data-testid="text-address-label">Address</h4>
+                    <p className="text-marpe-slate" data-testid="text-address">Port Harcourt, Nigeria</p>
                   </div>
                 </div>
+                
                 <div className="flex items-center">
                   <div className="w-12 h-12 bg-marpe-teal rounded-xl flex items-center justify-center mr-4">
                     <Phone className="h-6 w-6 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-semibold" data-testid="text-phone-label">Phone</h4>
-                    <p className="text-marpe-slate" data-testid="text-phone">+234 (0) 123 456 7890</p>
+                    <h4 className="font-semibold text-marpe-dark" data-testid="text-phone-label">Phone</h4>
+                    <p className="text-marpe-slate" data-testid="text-phone">+234 812 377 1335</p>
                   </div>
                 </div>
+                
                 <div className="flex items-center">
                   <div className="w-12 h-12 bg-marpe-orange rounded-xl flex items-center justify-center mr-4">
                     <Mail className="h-6 w-6 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-semibold" data-testid="text-email-label">Email</h4>
-                    <p className="text-marpe-slate" data-testid="text-email">hello@marpe.com</p>
+                    <h4 className="font-semibold text-marpe-dark" data-testid="text-email-label">Email</h4>
+                    <p className="text-marpe-slate break-all" data-testid="text-email">marpeprocurementservices@gmail.com</p>
                   </div>
                 </div>
+                
                 <div className="flex items-center">
                   <div className="w-12 h-12 bg-purple-600 rounded-xl flex items-center justify-center mr-4">
                     <Clock className="h-6 w-6 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-semibold" data-testid="text-hours-label">Business Hours</h4>
+                    <h4 className="font-semibold text-marpe-dark" data-testid="text-hours-label">Business Hours</h4>
                     <p className="text-marpe-slate" data-testid="text-hours">Mon - Fri: 9:00 AM - 6:00 PM WAT</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Contact Form */}
-            <div>
-              <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-8 shadow-lg">
-                <h3 className="text-2xl font-bold text-marpe-dark mb-6" data-testid="text-form-title">
-                  Send us a message
-                </h3>
-                <div className="grid md:grid-cols-2 gap-6 mb-6">
-                  <div>
-                    <Label htmlFor="firstName" className="text-sm font-semibold text-marpe-dark mb-2">
-                      First Name
-                    </Label>
-                    <Input
-                      id="firstName"
-                      name="firstName"
-                      type="text"
-                      value={form.firstName}
-                      onChange={handleChange}
-                      placeholder="John"
-                      required
-                      data-testid="input-first-name"
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="lastName" className="text-sm font-semibold text-marpe-dark mb-2">
-                      Last Name
-                    </Label>
-                    <Input
-                      id="lastName"
-                      name="lastName"
-                      type="text"
-                      value={form.lastName}
-                      onChange={handleChange}
-                      placeholder="Doe"
-                      required
-                      data-testid="input-last-name"
-                    />
-                  </div>
-                </div>
-                <div className="grid md:grid-cols-2 gap-6 mb-6">
-                  <div>
-                    <Label htmlFor="email" className="text-sm font-semibold text-marpe-dark mb-2">
-                      Email
-                    </Label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={form.email}
-                      onChange={handleChange}
-                      placeholder="john@company.com"
-                      required
-                      data-testid="input-email"
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="phone" className="text-sm font-semibold text-marpe-dark mb-2">
-                      Phone
-                    </Label>
-                    <Input
-                      id="phone"
-                      name="phone"
-                      type="tel"
-                      value={form.phone}
-                      onChange={handleChange}
-                      placeholder="+1 (555) 123-4567"
-                      data-testid="input-phone"
-                    />
-                  </div>
-                </div>
-                <div className="mb-6">
-                  <Label htmlFor="company" className="text-sm font-semibold text-marpe-dark mb-2">
-                    Company
+               {/* Contact Form */}
+               <div className="bg-white rounded-2xl p-8 shadow-lg">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6">Send us a message</h3>
+            
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="name" className="text-sm font-medium text-gray-700">
+                    Name <span className="text-red-500">*</span>
                   </Label>
                   <Input
-                    id="company"
-                    name="company"
+                    id="firstName"
+                    name="firstName"
                     type="text"
-                    value={form.company}
-                    onChange={handleChange}
-                    placeholder="Your Company Name"
-                    data-testid="input-company"
-                  />
-                </div>
-                <div className="mb-6">
-                  <Label htmlFor="message" className="text-sm font-semibold text-marpe-dark mb-2">
-                    Message
-                  </Label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    rows={4}
-                    value={form.message}
-                    onChange={handleChange}
-                    placeholder="Tell us about your sourcing needs..."
                     required
-                    data-testid="textarea-message"
+                    value={form.firstName}
+                    onChange={handleChange}
+                    className="w-full h-12 px-4 bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-500 rounded-xl focus:outline-none focus:ring-2 focus:ring-marpe-blue focus:border-marpe-blue focus:bg-white transition-all duration-200"
+                    placeholder="Your full name"
                   />
                 </div>
-                <Button 
-                  type="submit" 
-                  className="w-full bg-marpe-blue text-white py-4 text-lg font-semibold hover:bg-blue-700"
-                  disabled={contactMutation.isPending}
-                  data-testid="button-send-message"
-                >
-                  {contactMutation.isPending ? "Sending..." : "Send Message"}
-                </Button>
-              </form>
-            </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="email" className="text-sm font-medium text-gray-700">
+                    Email <span className="text-red-500">*</span>
+                  </Label>
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    required
+                    value={form.email}
+                    onChange={handleChange}
+                    className="w-full h-12 px-4 bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-500 rounded-xl focus:outline-none focus:ring-2 focus:ring-marpe-blue focus:border-marpe-blue focus:bg-white transition-all duration-200"
+                    placeholder="your.email@example.com"
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="phone" className="text-sm font-medium text-gray-700">
+                  Phone Number <span className="text-red-500">*</span>
+                </Label>
+                <Input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  required
+                  value={form.phone}
+                  onChange={handleChange}
+                  className="w-full h-12 px-4 bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-500 rounded-xl focus:outline-none focus:ring-2 focus:ring-marpe-blue focus:border-marpe-blue focus:bg-white transition-all duration-200"
+                  placeholder="+234 123 456 7890"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="subject" className="text-sm font-medium text-gray-700">
+                  Subject
+                </Label>
+                <Input
+                  id="company"
+                  name="company"
+                  type="text"
+                  value={form.company}
+                  onChange={handleChange}
+                  className="w-full h-12 px-4 bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-500 rounded-xl focus:outline-none focus:ring-2 focus:ring-marpe-blue focus:border-marpe-blue focus:bg-white transition-all duration-200"
+                  placeholder="What's this about?"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="message" className="text-sm font-medium text-gray-700">
+                  Message
+                </Label>
+                <Textarea
+                  id="message"
+                  name="message"
+                  rows={5}
+                  value={form.message}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-500 rounded-xl focus:outline-none focus:ring-2 focus:ring-marpe-blue focus:border-marpe-blue focus:bg-white resize-none transition-all duration-200"
+                  placeholder="Tell us more about your inquiry..."
+                />
+              </div>
+
+              <Button
+                type="submit"
+                disabled={contactMutation.isPending}
+                className="w-full bg-gradient-to-r from-marpe-blue to-marpe-teal text-white py-4 text-lg font-semibold hover:from-blue-700 hover:to-teal-700 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-center gap-2"
+              >
+                {contactMutation.isPending ? "Sending..." : "Send Message"}
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                </svg>
+              </Button>
+            </form>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
       <Footer />
     </div>

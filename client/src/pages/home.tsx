@@ -1,10 +1,19 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Navigation from "@/components/navigation";
 import Hero from "@/components/hero";
 import Footer from "@/components/footer";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import industrialMachineryImage from "../../../attached_assets/industrial-machinery.webp";
+import kitchenCookwareImage from "../../../attached_assets/cooking materials.jpg";
+import goodsinspectionImage from "../../../attached_assets/goodsinspection.png";
+import warehousingImage from "../../../attached_assets/warehousing.jpg";
+import happysiteworkersImage from "../../../attached_assets/happysiteworkers.webp";
+import globalshippingImage from "../../../attached_assets/globalshipping.jpg";
+import industrialPrinterImage from "../../../attached_assets/industrial-printer.jpg";
+import agriculturalMachineryImage from "../../../attached_assets/Agricultural-Machinery-supply.jpg";
+import thumbsUpImage from "../../../attached_assets/thumbsup.png";
 import { 
   Shield, 
   Clock, 
@@ -14,10 +23,96 @@ import {
   Star,
   Globe,
   ArrowRight,
-  CheckCircle
+  CheckCircle,
+  Search,
+  Package,
+  Truck as TruckIcon,
+  Building2
 } from "lucide-react";
+import { AnimatePresence, usePresenceData, motion } from "motion/react";
+
+// Slide component for testimonials
+function TestimonialSlide({ testimonial, index, isActive }: { testimonial: any, index: number, isActive: boolean }) {
+  return (
+    <div className={`absolute inset-0 transition-opacity duration-500 ${isActive ? 'opacity-100' : 'opacity-0'}`}>
+      <Card className="bg-white rounded-2xl p-8 h-full shadow-lg border border-gray-100">
+        {/* Company Logo Section */}
+        <div className="flex justify-center mb-6">
+          <div className="w-20 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center shadow-md px-3">
+            <span className="text-white font-bold text-sm">{testimonial.company}</span>
+          </div>
+        </div>
+        
+        {/* Star Rating */}
+        <div className="flex justify-center mb-6">
+          <div className="flex text-yellow-400">
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} className="h-5 w-5 fill-current" />
+            ))}
+          </div>
+        </div>
+        
+        {/* Testimonial Text */}
+        <p className="text-gray-700 mb-8 text-lg leading-relaxed text-center font-medium">
+          "{testimonial.content}"
+        </p>
+        
+        {/* Author Information */}
+        <div className="flex items-center justify-center mt-auto">
+          <img 
+            src={testimonial.image} 
+            alt={`${testimonial.name} testimonial`} 
+            className="w-12 h-12 rounded-full mr-4 border-2 border-gray-200"
+            onError={(e) => {
+              e.currentTarget.style.display = 'none';
+            }}
+          />
+          <div className="text-center">
+            <h4 className="font-bold text-gray-900 text-lg">
+              {testimonial.name}
+            </h4>
+            <p className="text-sm text-gray-600 font-medium">
+              {testimonial.position}
+            </p>
+          </div>
+        </div>
+      </Card>
+    </div>
+  );
+}
+
+// Custom styles for enhanced animations
+const cardStyles = `
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+  
+  .collection-card {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .collection-card:hover {
+    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.98);
+  }
+`;
 
 export default function Home() {
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+
   useEffect(() => {
     // Animate elements on scroll
     const observerOptions = {
@@ -39,52 +134,158 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
+  // Auto-rotate testimonials
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+    }, 5000); // Change every 5 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   const collections = [
-    {
-      title: "Electronics & Technology",
-      description: "Smartphones, laptops, IoT devices, and cutting-edge technology solutions",
-      productCount: "500+ Products",
-      image: "https://images.unsplash.com/photo-1518717758536-85ae29035b6d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250"
-    },
     {
       title: "Industrial Equipment",
       description: "Heavy machinery, production equipment, and industrial automation systems",
       productCount: "300+ Products",
-      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250"
+      image: industrialMachineryImage
     },
     {
-      title: "Home & Lifestyle",
-      description: "Furniture, appliances, decor, and everyday household essentials",
-      productCount: "800+ Products",
-      image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250"
+      title: "Agricultural Machinery",
+      description: "Agricultural machinery, smart farming equipment, and precision agriculture technology",
+      productCount: "250+ Products",
+      image: agriculturalMachineryImage
+    },
+    {
+      title: "Household Cooking Materials",
+      description: "Kitchen appliances, cookware, utensils, and professional cooking equipment",
+      productCount: "400+ Products",
+      image: kitchenCookwareImage
     }
   ];
 
   const testimonials = [
     {
-      name: "James Okoye",
-      position: "CEO, TechFlow Lagos",
-      content: "Marpe transformed our procurement process. What used to take weeks now happens in days, and the quality is consistently excellent.",
+      name: "David Chen",
+      position: "CEO, TechFlow",
+      company: "TechFlow",
+      content: "Marpe transformed our supply chain completely. Their expertise in Chinese manufacturing and quality control saved us months of trial and error. Highly recommended!",
       image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100"
     },
     {
       name: "Sarah Mbeki",
       position: "Operations Director, AfriMed",
-      content: "The transparency and communication throughout the process was outstanding. We always knew exactly where our order stood.",
+      company: "AfriMed",
+      content: "The transparency and communication throughout the process was outstanding. We always knew exactly where our order stood. Marpe's reliability has made them our trusted procurement partner.",
       image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100"
     },
     {
       name: "Michael Adebayo",
       position: "Founder, GreenTech Solutions",
-      content: "Cost savings were immediate and significant. Marpe's negotiation skills with suppliers are unmatched.",
+      company: "GreenTech",
+      content: "Cost savings were immediate and significant. Marpe's negotiation skills with suppliers are unmatched. They've helped us scale our operations efficiently while maintaining quality standards.",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100"
     }
   ];
 
   return (
     <div className="min-h-screen bg-slate-50">
+      <style dangerouslySetInnerHTML={{ __html: cardStyles }} />
       <Navigation />
       <Hero />
+
+      {/* Our Services Section */}
+      <section className="py-20 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-marpe-dark mb-6" data-testid="text-services-title">
+              Our Services
+            </h2>
+            <p className="text-xl text-marpe-slate max-w-3xl mx-auto" data-testid="text-services-subtitle">
+              Our main procurement solutions to make China work for you
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            {[
+              {
+                title: "Product Sourcing & Branding",
+                description: "Connect with trusted manufacturers in China and beyond. Factory vetting to ensure quality standards. Private labelling and brand development support.",
+                icon: Search,
+                gradient: "from-blue-500/20 to-blue-600/20",
+                borderColor: "border-blue-500/30"
+              },
+              {
+                title: "Supplier & Order Management",
+                description: "Secure payments to suppliers. Communication, order tracking, and modification requests. Consolidation and repackaging to save shipping costs.",
+                icon: Package,
+                gradient: "from-green-500/20 to-green-600/20",
+                borderColor: "border-green-500/30"
+              },
+              {
+                title: "Quality Control & Warehousing",
+                description: "Pre-shipment goods inspection and production monitoring. Free warehousing until orders are ready to ship. Assurance of correct quantity and quality.",
+                icon: Building2,
+                gradient: "from-purple-500/20 to-purple-600/20",
+                borderColor: "border-purple-500/30"
+              },
+              {
+                title: "Shipping & Logistics Solutions",
+                description: "Customs clearance and certification support. Multiple delivery options: Express, Air Freight, Ocean Freight. Door-to-door logistics for smooth delivery.",
+                icon: TruckIcon,
+                gradient: "from-orange-500/20 to-orange-600/20",
+                borderColor: "border-orange-500/30"
+              }
+            ].map((service, index) => {
+              const Icon = service.icon;
+              return (
+                <motion.div 
+                  key={index} 
+                  className="group relative"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  {/* Glass Card */}
+                  <div className={`bg-gradient-to-br ${service.gradient} backdrop-blur-lg rounded-2xl p-6 text-marpe-dark shadow-xl group-hover:shadow-2xl transition-all duration-300 transform group-hover:-translate-y-1 h-full relative border ${service.borderColor}`}>
+                    
+                    {/* Icon */}
+                    <div className="flex justify-center mb-4">
+                      <div className="w-12 h-12 bg-white/60 backdrop-blur-sm rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-white/40">
+                        <Icon className="h-6 w-6 text-marpe-dark" />
+                      </div>
+                    </div>
+                    
+                    {/* Content */}
+                    <div className="text-center">
+                      <h3 className="text-xl font-bold mb-3 text-marpe-dark" data-testid={`text-service-title-${index}`}>
+                        {service.title}
+                      </h3>
+                      <p className="text-marpe-slate text-sm leading-relaxed" data-testid={`text-service-description-${index}`}>
+                        {service.description}
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+          
+          {/* View All Services Button */}
+          <div className="text-center mt-12">
+            <Link href="/services">
+              <Button 
+                size="lg"
+                className="bg-marpe-blue text-white hover:bg-blue-700"
+                data-testid="button-view-all-services"
+              >
+                View All Services
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* About Section */}
       <section className="py-20 bg-white">
@@ -92,17 +293,17 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="animate-on-scroll">
               <h2 className="text-4xl md:text-5xl font-bold text-marpe-dark mb-8" data-testid="text-about-title">
-                About <span className="text-marpe-blue">Marpe</span>
+                About <span className="text-marpe-blue">Marpe®</span>
               </h2>
               <div className="space-y-6 text-lg text-marpe-slate leading-relaxed">
                 <p data-testid="text-about-intro">
-                  At Marpe, we make global procurement simple. As Africa's #1 sourcing and procurement company, we connect businesses with trusted manufacturers and suppliers across the world including China, Germany, Italy, United States.
+                  At Marpe, we make global procurement simple. As Africa's #1 sourcing company, we connect you with trusted manufacturers worldwide — from China to the U.S.
                 </p>
                 <p data-testid="text-about-process">
-                  All you need to do is tell us what product you want and in what quantity. We take care of the rest—sourcing only the best quality goods, negotiating directly with manufacturers, and ensuring smooth delivery right to your doorstep.
+                  Just tell us what you need and in what quantity. We'll handle the rest: sourcing quality goods, negotiating with manufacturers, and delivering straight to your doorstep.
                 </p>
                 <p data-testid="text-about-mission">
-                  From everyday household tools to large-scale industrial equipment, our mission is to give African businesses easy access to global markets without the hassle. With us, you can focus on growing your business while we handle the sourcing, quality checks, and logistics.
+                  From household tools to industrial equipment, our mission is to give African businesses easy access to global markets—so you can focus on growth while we take care of sourcing, quality checks, and logistics.
                 </p>
                 <p className="text-marpe-blue font-semibold text-xl" data-testid="text-about-tagline">
                   Your business. Our sourcing. Worldwide.
@@ -112,26 +313,26 @@ export default function Home() {
             <div className="animate-on-scroll">
               <div className="grid grid-cols-2 gap-4">
                 <img 
-                  src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" 
-                  alt="Global procurement business meeting" 
+                  src={globalshippingImage}
+                  alt="Global shipping and logistics" 
                   className="rounded-2xl shadow-lg hover-scale"
                   data-testid="img-about-1"
                 />
                 <img 
-                  src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" 
-                  alt="Modern manufacturing facility" 
+                  src={warehousingImage}
+                  alt="Modern warehousing facility" 
                   className="rounded-2xl shadow-lg hover-scale"
                   data-testid="img-about-2"
                 />
                 <img 
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" 
-                  alt="International business handshake" 
+                  src={happysiteworkersImage}
+                  alt="Happy site workers collaboration" 
                   className="rounded-2xl shadow-lg hover-scale"
                   data-testid="img-about-3"
                 />
                 <img 
-                  src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" 
-                  alt="Modern office team collaboration" 
+                  src={goodsinspectionImage}
+                  alt="Quality goods inspection process" 
                   className="rounded-2xl shadow-lg hover-scale"
                   data-testid="img-about-4"
                 />
@@ -155,31 +356,42 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {collections.map((collection, index) => (
-              <Card key={index} className="bg-white rounded-2xl shadow-lg overflow-hidden hover-scale animate-on-scroll">
-                <img 
-                  src={collection.image} 
-                  alt={collection.title} 
-                  className="w-full h-48 object-cover"
-                  data-testid={`img-collection-${index}`}
-                />
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold mb-2" data-testid={`text-collection-title-${index}`}>
+              <Card 
+                key={index} 
+                className={`group collection-card rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 ease-out transform hover:-translate-y-2 border-0`}
+                style={{
+                  background: 'linear-gradient(135deg, #ffffff 0%, #f8fafc 100%)'
+                }}
+              >
+                <div className="relative overflow-hidden">
+                  <img 
+                    src={collection.image} 
+                    alt={collection.title} 
+                    className="w-full h-56 object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                    data-testid={`img-collection-${index}`}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                </div>
+                <CardContent className="p-8 relative">
+                  <h3 className="text-2xl font-bold mb-3 text-black group-hover:text-marpe-blue transition-colors duration-300" data-testid={`text-collection-title-${index}`}>
                     {collection.title}
                   </h3>
-                  <p className="text-marpe-slate mb-4" data-testid={`text-collection-description-${index}`}>
+                  
+                  <p className="text-gray-700 mb-6 leading-relaxed text-base" data-testid={`text-collection-description-${index}`}>
                     {collection.description}
                   </p>
+                  
                   <div className="flex justify-between items-center">
-                    <span className="text-sm text-marpe-blue" data-testid={`text-collection-count-${index}`}>
+                    <span className="text-sm font-semibold text-marpe-blue bg-blue-50 px-3 py-1 rounded-full" data-testid={`text-collection-count-${index}`}>
                       {collection.productCount}
                     </span>
-                    <Button 
-                      variant="ghost" 
-                      className="text-marpe-orange font-semibold hover:text-orange-600 p-0"
+                    <button 
+                      className="group inline-flex items-center gap-2 text-marpe-orange font-semibold text-sm hover:text-orange-600 transition-colors duration-300"
                       data-testid={`button-explore-${index}`}
                     >
-                      Explore <ArrowRight className="ml-1 h-4 w-4" />
-                    </Button>
+                      Explore
+                      <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                    </button>
                   </div>
                 </CardContent>
               </Card>
@@ -201,59 +413,73 @@ export default function Home() {
       </section>
 
       {/* Why Choose Marpe */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16 animate-on-scroll">
+          <div className="text-left mb-16 animate-on-scroll relative z-30">
             <h2 className="text-4xl md:text-5xl font-bold text-marpe-dark mb-6" data-testid="text-why-title">
-              Why Choose Marpe
+              Why Choose Us
             </h2>
-            <p className="text-xl text-marpe-slate max-w-3xl mx-auto" data-testid="text-why-subtitle">
-              We're not just another procurement company. Here's what makes us different.
+            <p className="text-xl text-marpe-slate max-w-3xl" data-testid="text-why-subtitle">
+              Experience the difference with our comprehensive procurement solutions designed for African businesses
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                icon: Shield,
-                title: "Quality Guaranteed",
-                description: "Rigorous quality control processes ensure you receive only the best products from verified suppliers.",
-                gradient: "from-marpe-blue to-marpe-teal"
-              },
-              {
-                icon: Clock,
-                title: "Fast Turnaround",
-                description: "Average sourcing time of 48 hours with express options for urgent requirements.",
-                gradient: "from-marpe-orange to-yellow-500"
-              },
-              {
-                icon: Handshake,
-                title: "Trusted Network",
-                description: "Access to over 10,000 verified manufacturers and suppliers across 50+ countries.",
-                gradient: "from-purple-600 to-pink-600"
-              },
-              {
-                icon: DollarSign,
-                title: "Cost Effective",
-                description: "Save up to 40% on procurement costs through our bulk purchasing power and negotiation expertise.",
-                gradient: "from-green-600 to-teal-600"
-              }
-            ].map((feature, index) => {
-              const Icon = feature.icon;
-              return (
-                <div key={index} className="text-center animate-on-scroll hover-scale">
-                  <div className={`w-16 h-16 bg-gradient-to-br ${feature.gradient} rounded-2xl flex items-center justify-center mx-auto mb-6`}>
-                    <Icon className="h-8 w-8 text-white" />
+          {/* Thumbs Up Image - Positioned at extreme right */}
+          <motion.div 
+            className="absolute right-0 top-[30%] transform -translate-y-1/2 z-0"
+            initial={{ x: 200, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+          >
+            <img 
+              src={thumbsUpImage}
+              alt="Thumbs up showing approval" 
+              className="w-[500px] h-[500px] object-contain mix-blend-multiply"
+            />
+          </motion.div>
+
+          {/* Content area with right margin to avoid overlap */}
+          <div className="relative z-30 mr-32">
+            <div className="space-y-8">
+              {[
+                {
+                  number: "01",
+                  title: "Quality Guaranteed",
+                  description: "Rigorous quality control processes ensure you receive only the best products from verified suppliers."
+                },
+                {
+                  number: "02",
+                  title: "Fast Turnaround",
+                  description: "Average sourcing time of 48 hours with express options for urgent requirements."
+                },
+                {
+                  number: "03",
+                  title: "Trusted Network",
+                  description: "Access to over 10,000 verified manufacturers and suppliers across 50+ countries."
+                },
+                {
+                  number: "04",
+                  title: "Cost Effective",
+                  description: "Save up to 40% on procurement costs through our bulk purchasing power and negotiation expertise."
+                }
+              ].map((feature, index) => (
+                <div key={index} className="text-left">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <span className="text-blue-600 font-bold text-lg">{feature.number}</span>
+                    </div>
+                    <div className="animate-on-scroll">
+                      <h3 className="text-xl font-semibold mb-3 text-marpe-dark">
+                        {feature.title}
+                      </h3>
+                      <p className="text-marpe-slate leading-relaxed">
+                        {feature.description}
+                      </p>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-semibold mb-4" data-testid={`text-feature-title-${index}`}>
-                    {feature.title}
-                  </h3>
-                  <p className="text-marpe-slate" data-testid={`text-feature-description-${index}`}>
-                    {feature.description}
-                  </p>
                 </div>
-              );
-            })}
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -262,7 +488,7 @@ export default function Home() {
       <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 animate-on-scroll">
-            <h2 className="text-4xl md:text-5xl font-bold text-marpe-dark mb-6" data-testid="text-testimonials-title">
+            <h2 className="text-4xl md:text-5xl font-bold text-marpe-dark mb-6 pt-8" data-testid="text-testimonials-title">
               What Our Customers Say
             </h2>
             <p className="text-xl text-marpe-slate max-w-3xl mx-auto" data-testid="text-testimonials-subtitle">
@@ -270,37 +496,56 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {testimonials.map((testimonial, index) => (
-              <Card key={index} className="bg-slate-50 rounded-2xl p-8 hover-scale animate-on-scroll">
-                <div className="flex items-center mb-6">
-                  <div className="flex text-yellow-400">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="h-4 w-4 fill-current" />
-                    ))}
-                  </div>
-                </div>
-                <p className="text-marpe-dark mb-6 italic" data-testid={`text-testimonial-content-${index}`}>
-                  "{testimonial.content}"
-                </p>
-                <div className="flex items-center">
-                  <img 
-                    src={testimonial.image} 
-                    alt={`${testimonial.name} testimonial`} 
-                    className="w-12 h-12 rounded-full mr-4"
-                    data-testid={`img-testimonial-${index}`}
+          <div className="relative max-w-4xl mx-auto mb-12 px-20">
+            {/* Navigation Arrow - Left */}
+            <motion.button
+              onClick={() => setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length)}
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-white rounded-full shadow-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors duration-200"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </motion.button>
+
+            {/* Navigation Arrow - Right */}
+            <motion.button
+              onClick={() => setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)}
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-white rounded-full shadow-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors duration-200"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </motion.button>
+
+            <div className="relative h-96">
+              <AnimatePresence mode="wait">
+                {testimonials.map((testimonial, index) => (
+                  <TestimonialSlide
+                    key={index}
+                    testimonial={testimonial}
+                    index={index}
+                    isActive={index === currentTestimonial}
                   />
-                  <div>
-                    <h4 className="font-semibold" data-testid={`text-testimonial-name-${index}`}>
-                      {testimonial.name}
-                    </h4>
-                    <p className="text-sm text-marpe-slate" data-testid={`text-testimonial-position-${index}`}>
-                      {testimonial.position}
-                    </p>
-                  </div>
-                </div>
-              </Card>
-            ))}
+                ))}
+              </AnimatePresence>
+            </div>
+            
+            {/* Navigation dots */}
+            <div className="flex justify-center space-x-2 mt-8">
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentTestimonial(index)}
+                  className={`w-3 h-3 rounded-full transition-colors duration-300 ${
+                    index === currentTestimonial ? 'bg-marpe-blue' : 'bg-gray-300'
+                  }`}
+                />
+              ))}
+            </div>
           </div>
 
           <div className="text-center animate-on-scroll">

@@ -8,9 +8,12 @@ export default function Footer() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Company Info */}
           <div>
-            <div className="flex items-center text-2xl font-bold mb-6">
-              <Globe className="h-8 w-8 mr-2" />
-              Marpe
+            <div className="flex items-center mb-6">
+              <img 
+                src="/marpe-logo.png" 
+                alt="Marpe Logo" 
+                className="h-12 w-auto"
+              />
             </div>
             <p className="text-gray-300 mb-6">
               Africa's #1 sourcing and procurement company connecting businesses with trusted manufacturers worldwide.
@@ -117,15 +120,15 @@ export default function Footer() {
             <div className="space-y-3 text-gray-300">
               <p className="flex items-center" data-testid="text-address">
                 <MapPin className="h-4 w-4 mr-2" />
-                123 Victoria Island, Lagos, Nigeria
+                Port Harcourt, Nigeria
               </p>
               <p className="flex items-center" data-testid="text-phone">
                 <Phone className="h-4 w-4 mr-2" />
-                +234 (0) 123 456 7890
+                +234 812 377 1335
               </p>
               <p className="flex items-center" data-testid="text-email">
                 <Mail className="h-4 w-4 mr-2" />
-                hello@marpe.com
+                marpeprocurementservices@gmail.com
               </p>
               <p className="flex items-center" data-testid="text-hours">
                 <Clock className="h-4 w-4 mr-2" />
@@ -138,12 +141,15 @@ export default function Footer() {
         <div className="border-t border-gray-700 pt-8 mt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-300 mb-4 md:mb-0" data-testid="text-copyright">
-              &copy; 2024 Marpe. All rights reserved.
+              &copy; 2024 Marpe®. All rights reserved.
             </p>
             <div className="flex space-x-6 text-gray-300">
               <a href="#" className="hover:text-white transition-colors" data-testid="link-privacy">
                 Privacy Policy
               </a>
+              <Link href="/admin-auth" className="hover:text-white transition-colors" data-testid="link-admin">
+                Admin
+              </Link>
               <a href="#" className="hover:text-white transition-colors" data-testid="link-terms">
                 Terms of Service
               </a>

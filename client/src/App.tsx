@@ -10,10 +10,6 @@ import Pricing from "@/pages/pricing";
 import Services from "@/pages/services";
 import Customers from "@/pages/customers";
 import Contact from "@/pages/contact";
-import ClientAuth from "@/pages/client-auth";
-import AdminAuth from "@/pages/admin-auth";
-import ClientDashboard from "@/pages/client-dashboard";
-import AdminDashboard from "@/pages/admin-dashboard";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -26,10 +22,6 @@ function Router() {
       <Route path="/services" component={Services} />
       <Route path="/customers" component={Customers} />
       <Route path="/contact" component={Contact} />
-      <Route path="/client-auth" component={ClientAuth} />
-      <Route path="/admin-auth" component={AdminAuth} />
-      <Route path="/client-dashboard" component={ClientDashboard} />
-      <Route path="/admin-dashboard" component={AdminDashboard} />
       <Route component={NotFound} />
     </Switch>
   );

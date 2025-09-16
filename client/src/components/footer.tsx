@@ -147,9 +147,6 @@ export default function Footer() {
               <a href="#" className="hover:text-white transition-colors" data-testid="link-privacy">
                 Privacy Policy
               </a>
-              <Link href="/admin-auth" className="hover:text-white transition-colors" data-testid="link-admin">
-                Admin
-              </Link>
               <a href="#" className="hover:text-white transition-colors" data-testid="link-terms">
                 Terms of Service
               </a>

@@ -319,11 +319,15 @@ export default function About() {
                   <span className="font-semibold text-marpe-blue"> Start your procurement process today</span> and experience the difference.
                 </p>
                 <div className="flex justify-center">
-                  <Link href="/client-auth">
+                  <a 
+                    href="https://wa.me/2348123771335?text=Hello%20Marpe%20Team,%20I%20would%20like%20to%20contact%20an%20agent%20about%20your%20procurement%20services."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <button className="bg-marpe-orange text-white px-8 py-4 rounded-2xl font-bold text-lg hover:bg-orange-600 hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 shadow-lg border border-white/20 backdrop-blur-sm">
                       Contact Our Agent
                     </button>
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>

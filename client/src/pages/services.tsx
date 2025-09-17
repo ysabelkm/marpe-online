@@ -105,7 +105,7 @@ export default function Services() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-marpe-dark mb-4 sm:mb-6">
-              See Marpe in Action
+              See Marpe® in Action
             </h2>
             <p className="text-lg sm:text-xl text-marpe-slate max-w-3xl mx-auto px-4 sm:px-0">
               Discover how we transform global procurement for African businesses
@@ -146,13 +146,34 @@ export default function Services() {
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
-          <div className="text-center mb-8 sm:mb-12">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
+          <div className="text-center mb-16">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl mb-6 shadow-lg"
+            >
+              <MagnifyingGlassIcon className="w-8 h-8 text-white" />
+            </motion.div>
+            <motion.h2 
+              className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
               Procurement Services
-            </h2>
-            <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto px-4 sm:px-0">
+            </motion.h2>
+            <motion.p 
+              className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
               Comprehensive procurement solutions for your business needs
-            </p>
+            </motion.p>
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">

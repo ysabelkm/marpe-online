@@ -142,7 +142,7 @@ export default function Footer() {
               </p>
               <p className="flex items-center" data-testid="text-hours">
                 <Clock className="h-4 w-4 mr-2" />
-                Mon - Fri: 9:00 AM - 6:00 PM
+                Mon - Fri: 8:00 AM - 8:00 PM
               </p>
             </div>
           </div>
@@ -151,7 +151,7 @@ export default function Footer() {
         <div className="border-t border-gray-700 pt-6 sm:pt-8 mt-6 sm:mt-8">
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-3 sm:space-y-0">
             <p className="text-gray-300 text-sm sm:text-base text-center sm:text-left" data-testid="text-copyright">
-              &copy; 2024 Marpe®. All rights reserved.
+              &copy; 2019 Marpe®. All rights reserved.
             </p>
             <div className="flex flex-wrap justify-center sm:justify-end space-x-4 sm:space-x-6 text-gray-300 text-sm sm:text-base">
               <a href="#" className="hover:text-white transition-colors" data-testid="link-privacy">

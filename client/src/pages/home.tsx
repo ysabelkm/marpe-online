@@ -195,9 +195,9 @@ export default function Home() {
       <Hero />
 
       {/* Our Services Section */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative overflow-hidden">
+      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative overflow-hidden" aria-labelledby="services-heading">
         {/* Background Elements - hidden on mobile for better performance */}
-        <div className="hidden sm:block absolute inset-0 overflow-hidden">
+        <div className="hidden sm:block absolute inset-0 overflow-hidden" aria-hidden="true">
           <div className="absolute -top-20 -right-20 w-80 h-80 bg-gradient-to-br from-blue-200/30 to-indigo-200/30 rounded-full blur-3xl"></div>
           <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-gradient-to-tr from-purple-200/30 to-blue-200/30 rounded-full blur-3xl"></div>
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-indigo-100/20 to-purple-100/20 rounded-full blur-2xl"></div>
@@ -205,17 +205,19 @@ export default function Home() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Section Header */}
-          <div className="text-center mb-8 sm:mb-12 lg:mb-16 animate-on-scroll">
+          <header className="text-center mb-8 sm:mb-12 lg:mb-16 animate-on-scroll">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
               className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl sm:rounded-2xl mb-4 sm:mb-6 shadow-lg"
+              aria-hidden="true"
             >
               <Search className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
             </motion.div>
             <motion.h2 
+              id="services-heading"
               className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 sm:mb-6"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -233,9 +235,66 @@ export default function Home() {
               viewport={{ once: true }}
               data-testid="text-services-subtitle"
             >
-              Our main procurement solutions to make China work for you
+              Comprehensive <strong>procurement solutions</strong> and <strong>supply chain management</strong> services to make global sourcing work for African businesses
             </motion.p>
-          </div>
+          </header>
+
+          {/* Services Structured Data */}
+          <script type="application/ld+json" dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Service",
+              "name": "China Procurement Services",
+              "description": "Comprehensive procurement solutions and supply chain management services for African businesses",
+              "provider": {
+                "@type": "Organization",
+                "name": "Marpe Online"
+              },
+              "serviceType": "Procurement and Sourcing",
+              "areaServed": {
+                "@type": "Country",
+                "name": "Nigeria"
+              },
+              "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": "Procurement Services",
+                "itemListElement": [
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Product Sourcing & Branding",
+                      "description": "Connect with trusted manufacturers in China and beyond. Factory vetting to ensure quality standards."
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Supplier & Order Management",
+                      "description": "Secure payments to suppliers. Communication, order tracking, and modification requests."
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Quality Control & Warehousing",
+                      "description": "Pre-shipment goods inspection and production monitoring. Free warehousing until orders are ready to ship."
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Shipping & Logistics Solutions",
+                      "description": "Customs clearance and certification support. Multiple delivery options: Express, Air Freight, Ocean Freight."
+                    }
+                  }
+                ]
+              }
+            })
+          }} />
 
           {/* Services Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
@@ -475,53 +534,65 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white" aria-labelledby="about-heading">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="animate-on-scroll">
-              <h2 className="text-4xl md:text-5xl font-bold text-marpe-dark mb-8" data-testid="text-about-title">
+            <article className="animate-on-scroll">
+              <h2 id="about-heading" className="text-4xl md:text-5xl font-bold text-marpe-dark mb-8" data-testid="text-about-title">
                 About <span className="text-marpe-blue">Marpe®</span>
               </h2>
               <div className="space-y-6 text-lg text-marpe-slate leading-relaxed">
                 <p data-testid="text-about-intro">
-                  At Marpe, we make global procurement simple. As Africa's #1 sourcing company, we connect you with trusted manufacturers worldwide — from China to the U.S.
+                  At Marpe, we make global procurement simple. As Africa's #1 sourcing company, we connect you with trusted manufacturers worldwide — from China to the U.S., Germany, and Italy.
                 </p>
                 <p data-testid="text-about-process">
-                  Just tell us what you need and in what quantity. We'll handle the rest: sourcing quality goods, negotiating with manufacturers, and delivering straight to your doorstep.
+                  Just tell us what you need and in what quantity. We'll handle the rest: sourcing quality goods, negotiating with manufacturers, and delivering straight to your doorstep with our comprehensive supply chain management.
                 </p>
                 <p data-testid="text-about-mission">
-                  From household tools to industrial equipment, our mission is to give African businesses easy access to global markets—so you can focus on growth while we take care of sourcing, quality checks, and logistics.
+                  From household tools to industrial equipment and agricultural machinery, our mission is to give African businesses easy access to global markets—so you can focus on growth while we take care of sourcing, quality checks, and logistics.
                 </p>
                 <p className="text-marpe-blue font-semibold text-xl" data-testid="text-about-tagline">
                   Your business. Our sourcing. Worldwide.
                 </p>
               </div>
-            </div>
+            </article>
             <div className="animate-on-scroll">
               <div className="grid grid-cols-2 gap-4">
                 <img 
                   src={globalshippingImage}
-                  alt="Global shipping and logistics" 
+                  alt="Marpe global shipping and logistics services for China procurement and international trade" 
                   className="rounded-2xl shadow-lg hover-scale"
                   data-testid="img-about-1"
+                  loading="lazy"
+                  width="300"
+                  height="200"
                 />
                 <img 
                   src={warehousingImage}
-                  alt="Modern warehousing facility" 
+                  alt="Modern warehousing facility for quality control and goods inspection in China procurement process" 
                   className="rounded-2xl shadow-lg hover-scale"
                   data-testid="img-about-2"
+                  loading="lazy"
+                  width="300"
+                  height="200"
                 />
                 <img 
                   src={happysiteworkersImage}
-                  alt="Happy site workers collaboration" 
+                  alt="Professional team collaboration in global sourcing and supply chain management" 
                   className="rounded-2xl shadow-lg hover-scale"
                   data-testid="img-about-3"
+                  loading="lazy"
+                  width="300"
+                  height="200"
                 />
                 <img 
                   src={goodsinspectionImage}
-                  alt="Quality goods inspection process" 
+                  alt="Quality goods inspection process for industrial equipment and agricultural machinery sourcing" 
                   className="rounded-2xl shadow-lg hover-scale"
                   data-testid="img-about-4"
+                  loading="lazy"
+                  width="300"
+                  height="200"
                 />
               </div>
             </div>
@@ -671,16 +742,48 @@ export default function Home() {
       </section>
 
       {/* Customer Testimonials Preview */}
-      <section className="py-20 bg-slate-50">
+      <section className="py-20 bg-slate-50" aria-labelledby="testimonials-heading">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16 animate-on-scroll">
-            <h2 className="text-4xl md:text-5xl font-bold text-marpe-dark mb-6 pt-8" data-testid="text-testimonials-title">
+          <header className="text-center mb-16 animate-on-scroll">
+            <h2 id="testimonials-heading" className="text-4xl md:text-5xl font-bold text-marpe-dark mb-6 pt-8" data-testid="text-testimonials-title">
               What Our Customers Say
             </h2>
             <p className="text-xl text-marpe-slate max-w-3xl mx-auto" data-testid="text-testimonials-subtitle">
-              Don't just take our word for it. Here's what businesses across Africa are saying about Marpe.
+              Don't just take our word for it. Here's what businesses across Africa are saying about our <strong>global sourcing</strong> and <strong>procurement services</strong>.
             </p>
-          </div>
+          </header>
+          
+          {/* Structured Data for Reviews */}
+          <script type="application/ld+json" dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "Marpe Online",
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.9",
+                "reviewCount": "500",
+                "bestRating": "5"
+              },
+              "review": testimonials.map(testimonial => ({
+                "@type": "Review",
+                "author": {
+                  "@type": "Person",
+                  "name": testimonial.name
+                },
+                "reviewBody": testimonial.content,
+                "reviewRating": {
+                  "@type": "Rating",
+                  "ratingValue": "5",
+                  "bestRating": "5"
+                },
+                "publisher": {
+                  "@type": "Organization",
+                  "name": "Marpe Online"
+                }
+              }))
+            })
+          }} />
 
           <div className="relative max-w-4xl mx-auto mb-12 px-20">
             {/* Navigation Arrow - Left */}

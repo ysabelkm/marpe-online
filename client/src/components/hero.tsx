@@ -14,9 +14,9 @@ export default function Hero() {
   const currentWord = words[currentWordIndex];
   
   useEffect(() => {
-    const typeSpeed = isDeleting ? 50 : 100;
-    const deleteSpeed = 30;
-    const pauseTime = 1500;
+    const typeSpeed = isDeleting ? 40 : 80;
+    const deleteSpeed = 25;
+    const pauseTime = 2000;
     
     const typeWriter = () => {
       if (!isDeleting) {
@@ -41,7 +41,7 @@ export default function Hero() {
       }
     };
     
-    const timer = setTimeout(typeWriter, 100);
+    const timer = setTimeout(typeWriter, 50);
     return () => clearTimeout(timer);
   }, [currentText, isDeleting, currentWord, currentWordIndex, words.length]);
 
@@ -49,33 +49,33 @@ export default function Hero() {
 
   return (
     <>
-    <section className="relative min-h-[80vh] sm:min-h-[70vh] bg-gradient-to-br from-blue-50 to-white overflow-hidden">
+    <section className="relative min-h-[80vh] sm:min-h-[70vh] bg-gradient-to-br from-blue-50 to-white overflow-hidden" role="banner" aria-label="Hero section">
 
       
       {/* Floating geometric shapes - hidden on mobile for better performance */}
-      <div className="hidden sm:block absolute top-20 right-20 w-64 h-64 bg-gradient-to-br from-blue-200/20 to-purple-200/20 rounded-full blur-3xl"></div>
-      <div className="hidden sm:block absolute bottom-32 left-32 w-48 h-48 bg-gradient-to-tr from-blue-100/30 to-cyan-100/30 rounded-full blur-2xl"></div>
+      <div className="hidden sm:block absolute top-20 right-20 w-64 h-64 bg-gradient-to-br from-blue-200/20 to-purple-200/20 rounded-full blur-3xl" aria-hidden="true"></div>
+      <div className="hidden sm:block absolute bottom-32 left-32 w-48 h-48 bg-gradient-to-tr from-blue-100/30 to-cyan-100/30 rounded-full blur-2xl" aria-hidden="true"></div>
       
       {/* Additional geometric shapes for depth - hidden on mobile */}
-      <div className="hidden lg:block absolute top-40 left-1/4 w-32 h-32 bg-gradient-to-br from-blue-100/20 to-indigo-100/20 rounded-lg blur-2xl transform rotate-12"></div>
-      <div className="hidden lg:block absolute bottom-20 right-1/3 w-24 h-24 bg-gradient-to-tr from-cyan-100/25 to-blue-100/25 rounded-full blur-xl"></div>
-      <div className="hidden lg:block absolute top-1/2 left-1/3 w-40 h-40 bg-gradient-to-br from-purple-100/15 to-blue-100/15 rounded-full blur-3xl"></div>
+      <div className="hidden lg:block absolute top-40 left-1/4 w-32 h-32 bg-gradient-to-br from-blue-100/20 to-indigo-100/20 rounded-lg blur-2xl transform rotate-12" aria-hidden="true"></div>
+      <div className="hidden lg:block absolute bottom-20 right-1/3 w-24 h-24 bg-gradient-to-tr from-cyan-100/25 to-blue-100/25 rounded-full blur-xl" aria-hidden="true"></div>
+      <div className="hidden lg:block absolute top-1/2 left-1/3 w-40 h-40 bg-gradient-to-br from-purple-100/15 to-blue-100/15 rounded-full blur-3xl" aria-hidden="true"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-20 pb-8">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start lg:items-start min-h-[60vh] sm:min-h-[50vh] pt-4 lg:pt-0">
           {/* Left Content */}
           <div className="animate-slide-up pt-8 sm:pt-12 lg:pt-20">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight" data-testid="text-hero-title">
-              China Procurement
-              <span className="block text-marpe-orange drop-shadow-lg">
-                Made <span className="typewriter-text">{currentText}</span>
+              <span className="text-marpe-orange drop-shadow-lg">China Procurement</span>
+              <span className="block text-gray-900">
+                Made <span className="typewriter-text text-marpe-orange transition-all duration-200 ease-in-out">{currentText}</span>
               </span>
             </h1>
             <p 
               className="text-lg sm:text-xl text-gray-600 mb-6 sm:mb-8 max-w-lg leading-relaxed" 
               data-testid="text-hero-subtitle"
             >
-              Boost efficiency, enhance supplier relationships, and streamline operations with our cutting-edge procurement technology.
+              Africa's #1 global sourcing company specializing in <strong>China procurement</strong>, <strong>industrial equipment sourcing</strong>, and <strong>supply chain management</strong>. Connect with trusted manufacturers worldwide and streamline your procurement process.
             </p>
             
             {/* Email Input and CTA */}

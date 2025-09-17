@@ -49,7 +49,7 @@ export default function Customers() {
       
       {/* Hero Section */}
       <section 
-        className="pt-24 pb-16 relative"
+        className="pt-20 sm:pt-24 pb-12 sm:pb-16 relative"
         style={{
           backgroundImage: "url('/customers.jpg')",
           backgroundSize: "cover",
@@ -62,43 +62,43 @@ export default function Customers() {
         
         {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6" data-testid="text-page-title">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6" data-testid="text-page-title">
             What Our Customers Say
           </h1>
-          <p className="text-xl text-white/90 max-w-3xl mx-auto" data-testid="text-page-subtitle">
+          <p className="text-lg sm:text-xl text-white/90 max-w-3xl mx-auto px-4 sm:px-0" data-testid="text-page-subtitle">
             Don't just take our word for it. Here's what businesses across Africa are saying about Marpe.
           </p>
         </div>
       </section>
 
       {/* Testimonials Grid */}
-      <section className="py-20">
+      <section className="py-12 sm:py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {testimonials.map((testimonial, index) => (
-              <Card key={index} className="bg-white rounded-2xl p-8 hover-scale">
-                <div className="flex items-center mb-6">
+              <Card key={index} className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 hover-scale">
+                <div className="flex items-center mb-4 sm:mb-6">
                   <div className="flex text-yellow-400">
                     {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="h-4 w-4 fill-current" />
+                      <Star key={i} className="h-3 w-3 sm:h-4 sm:w-4 fill-current" />
                     ))}
                   </div>
                 </div>
-                <p className="text-marpe-dark mb-6 italic" data-testid={`text-testimonial-content-${index}`}>
+                <p className="text-marpe-dark mb-4 sm:mb-6 italic text-sm sm:text-base" data-testid={`text-testimonial-content-${index}`}>
                   "{testimonial.content}"
                 </p>
                 <div className="flex items-center">
                   <img 
                     src={testimonial.image} 
                     alt={`${testimonial.name} testimonial`} 
-                    className="w-12 h-12 rounded-full mr-4"
+                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full mr-3 sm:mr-4"
                     data-testid={`img-testimonial-${index}`}
                   />
                   <div>
-                    <h4 className="font-semibold" data-testid={`text-testimonial-name-${index}`}>
+                    <h4 className="font-semibold text-sm sm:text-base" data-testid={`text-testimonial-name-${index}`}>
                       {testimonial.name}
                     </h4>
-                    <p className="text-sm text-marpe-slate" data-testid={`text-testimonial-position-${index}`}>
+                    <p className="text-xs sm:text-sm text-marpe-slate" data-testid={`text-testimonial-position-${index}`}>
                       {testimonial.position}
                     </p>
                   </div>

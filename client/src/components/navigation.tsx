@@ -134,13 +134,13 @@ export default function Navigation() {
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
           <div className="md:hidden border-t bg-white border-gray-200">
-            <div className="px-2 pt-2 pb-3 space-y-1">
+            <div className="px-4 pt-4 pb-4 space-y-3">
               {[...leftNavigation, ...rightNavigation].map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
                   className={cn(
-                    "block px-3 py-2 text-base font-medium transition-colors",
+                    "block px-3 py-3 text-base font-medium transition-colors rounded-lg",
                     isHomePage
                       ? location === item.href
                         ? "text-marpe-blue bg-blue-50"
@@ -155,6 +155,23 @@ export default function Navigation() {
                   {item.name}
                 </Link>
               ))}
+              
+              {/* Mobile Chat Button */}
+              <div className="pt-3 border-t border-gray-200">
+                <a 
+                  href="https://wa.me/2348123771335?text=Hello%20Marpe%20Team,%20I%20would%20like%20to%20chat%20with%20an%20agent%20about%20your%20procurement%20services."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <Button 
+                    className="w-full bg-marpe-orange text-white px-4 py-3 hover:bg-orange-600 rounded-lg text-base font-medium transition-all duration-300 shadow-lg"
+                    data-testid="mobile-button-chat-agent"
+                  >
+                    Chat with Agent
+                  </Button>
+                </a>
+              </div>
             </div>
           </div>
         )}

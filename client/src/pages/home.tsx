@@ -195,95 +195,282 @@ export default function Home() {
       <Hero />
 
       {/* Our Services Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-marpe-dark mb-6" data-testid="text-services-title">
-              Our Services
-            </h2>
-            <p className="text-xl text-marpe-slate max-w-3xl mx-auto" data-testid="text-services-subtitle">
+      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative overflow-hidden">
+        {/* Background Elements - hidden on mobile for better performance */}
+        <div className="hidden sm:block absolute inset-0 overflow-hidden">
+          <div className="absolute -top-20 -right-20 w-80 h-80 bg-gradient-to-br from-blue-200/30 to-indigo-200/30 rounded-full blur-3xl"></div>
+          <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-gradient-to-tr from-purple-200/30 to-blue-200/30 rounded-full blur-3xl"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-indigo-100/20 to-purple-100/20 rounded-full blur-2xl"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* Section Header */}
+          <div className="text-center mb-8 sm:mb-12 lg:mb-16 animate-on-scroll">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl sm:rounded-2xl mb-4 sm:mb-6 shadow-lg"
+            >
+              <Search className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
+            </motion.div>
+            <motion.h2 
+              className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 sm:mb-6"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+              data-testid="text-services-title"
+            >
+              Procurement Services
+            </motion.h2>
+            <motion.p 
+              className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-4 sm:px-0"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              viewport={{ once: true }}
+              data-testid="text-services-subtitle"
+            >
               Our main procurement solutions to make China work for you
-            </p>
+            </motion.p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          {/* Services Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
             {[
               {
                 title: "Product Sourcing & Branding",
                 description: "Connect with trusted manufacturers in China and beyond. Factory vetting to ensure quality standards. Private labelling and brand development support.",
                 icon: Search,
-                gradient: "from-blue-500/20 to-blue-600/20",
-                borderColor: "border-blue-500/30"
+                gradient: "from-blue-500 to-indigo-600",
+                bgGradient: "from-blue-50 to-indigo-50"
               },
               {
                 title: "Supplier & Order Management",
                 description: "Secure payments to suppliers. Communication, order tracking, and modification requests. Consolidation and repackaging to save shipping costs.",
                 icon: Package,
-                gradient: "from-green-500/20 to-green-600/20",
-                borderColor: "border-green-500/30"
+                gradient: "from-green-500 to-emerald-600",
+                bgGradient: "from-green-50 to-emerald-50"
               },
               {
                 title: "Quality Control & Warehousing",
                 description: "Pre-shipment goods inspection and production monitoring. Free warehousing until orders are ready to ship. Assurance of correct quantity and quality.",
                 icon: Building2,
-                gradient: "from-purple-500/20 to-purple-600/20",
-                borderColor: "border-purple-500/30"
+                gradient: "from-purple-500 to-violet-600",
+                bgGradient: "from-purple-50 to-violet-50"
               },
               {
                 title: "Shipping & Logistics Solutions",
                 description: "Customs clearance and certification support. Multiple delivery options: Express, Air Freight, Ocean Freight. Door-to-door logistics for smooth delivery.",
                 icon: TruckIcon,
-                gradient: "from-orange-500/20 to-orange-600/20",
-                borderColor: "border-orange-500/30"
+                gradient: "from-orange-500 to-red-600",
+                bgGradient: "from-orange-50 to-red-50"
               }
-            ].map((service, index) => {
-              const Icon = service.icon;
-              return (
-                <motion.div 
-                  key={index} 
-                  className="group relative"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  {/* Glass Card */}
-                  <div className={`bg-gradient-to-br ${service.gradient} backdrop-blur-lg rounded-2xl p-6 text-marpe-dark shadow-xl group-hover:shadow-2xl transition-all duration-300 transform group-hover:-translate-y-1 h-full relative border ${service.borderColor}`}>
-                    
-                    {/* Icon */}
-                    <div className="flex justify-center mb-4">
-                      <div className="w-12 h-12 bg-white/60 backdrop-blur-sm rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-white/40">
-                        <Icon className="h-6 w-6 text-marpe-dark" />
-                      </div>
-                    </div>
-                    
-                    {/* Content */}
-                    <div className="text-center">
-                      <h3 className="text-xl font-bold mb-3 text-marpe-dark" data-testid={`text-service-title-${index}`}>
-                        {service.title}
-                      </h3>
-                      <p className="text-marpe-slate text-sm leading-relaxed" data-testid={`text-service-description-${index}`}>
-                        {service.description}
-                      </p>
+            ].map((service, index) => (
+              <motion.div
+                key={index}
+                className="group relative"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                viewport={{ once: true }}
+              >
+                <div className={`bg-gradient-to-br ${service.bgGradient} backdrop-blur-sm rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-xl group-hover:shadow-2xl transition-all duration-500 transform group-hover:-translate-y-1 sm:group-hover:-translate-y-2 h-full border border-white/50 relative overflow-hidden`}>
+                  {/* Animated Background */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
+                  
+                  {/* Icon */}
+                  <div className={`w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-br ${service.gradient} rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                    <div className="text-white">
+                      <service.icon className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8" />
                     </div>
                   </div>
-                </motion.div>
-              );
-            })}
+                  
+                  {/* Content */}
+                  <div className="relative z-10">
+                    <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-3 sm:mb-4 group-hover:text-gray-800 transition-colors" data-testid={`text-service-title-${index}`}>
+                      {service.title}
+                    </h3>
+                    <p className="text-sm sm:text-base text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors" data-testid={`text-service-description-${index}`}>
+                      {service.description}
+                    </p>
+                  </div>
+
+                  {/* Hover Effect */}
+                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-current to-transparent opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                </div>
+              </motion.div>
+            ))}
           </div>
-          
-          {/* View All Services Button */}
-          <div className="text-center mt-12">
+
+          {/* CTA Section */}
+          <motion.div 
+            className="text-center mt-8 sm:mt-12 lg:mt-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            viewport={{ once: true }}
+          >
             <Link href="/services">
-              <Button 
-                size="lg"
-                className="bg-marpe-blue text-white hover:bg-blue-700"
-                data-testid="button-view-all-services"
-              >
+              <button className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-indigo-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl text-sm sm:text-base" data-testid="button-view-all-services">
                 View All Services
-              </Button>
+                <svg className="w-4 h-4 sm:w-5 sm:h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </button>
             </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Currency Services Section */}
+      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 relative overflow-hidden">
+        {/* Background Elements - hidden on mobile for better performance */}
+        <div className="hidden sm:block absolute inset-0 overflow-hidden">
+          <div className="absolute -top-20 -right-20 w-80 h-80 bg-gradient-to-br from-emerald-200/30 to-teal-200/30 rounded-full blur-3xl"></div>
+          <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-gradient-to-tr from-cyan-200/30 to-emerald-200/30 rounded-full blur-3xl"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-teal-100/20 to-cyan-100/20 rounded-full blur-2xl"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* Section Header */}
+          <div className="text-center mb-8 sm:mb-12 lg:mb-16 animate-on-scroll">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl sm:rounded-2xl mb-4 sm:mb-6 shadow-lg"
+            >
+              <svg className="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </motion.div>
+            <motion.h2 
+              className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 sm:mb-6"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              Currency Exchange Services
+            </motion.h2>
+            <motion.p 
+              className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-4 sm:px-0"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              Seamlessly handle international payments and currency exchanges for your global procurement needs
+            </motion.p>
           </div>
+
+          {/* Currency Services Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+            {[
+              {
+                icon: (
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                ),
+                title: "Currency Exchange",
+                description: "Buy and sell large amounts of currencies at competitive rates with our global network of financial partners.",
+                gradient: "from-emerald-500 to-teal-600",
+                bgGradient: "from-emerald-50 to-teal-50"
+              },
+              {
+                icon: (
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                  </svg>
+                ),
+                title: "Supplier Payments",
+                description: "Pay your suppliers worldwide in any currency with our secure and fast payment processing system.",
+                gradient: "from-cyan-500 to-blue-600",
+                bgGradient: "from-cyan-50 to-blue-50"
+              },
+              {
+                icon: (
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                ),
+                title: "Risk Management",
+                description: "Protect your business from currency fluctuations with our hedging strategies and risk management tools.",
+                gradient: "from-teal-500 to-emerald-600",
+                bgGradient: "from-teal-50 to-emerald-50"
+              }
+            ].map((service, index) => (
+              <motion.div
+                key={index}
+                className="group relative"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                viewport={{ once: true }}
+              >
+                <div className={`bg-gradient-to-br ${service.bgGradient} backdrop-blur-sm rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-xl group-hover:shadow-2xl transition-all duration-500 transform group-hover:-translate-y-1 sm:group-hover:-translate-y-2 h-full border border-white/50 relative overflow-hidden`}>
+                  {/* Animated Background */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
+                  
+                  {/* Icon */}
+                  <div className={`w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-br ${service.gradient} rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                    <div className="text-white">
+                      <div className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8">
+                        {service.icon}
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="relative z-10">
+                    <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-3 sm:mb-4 group-hover:text-gray-800 transition-colors">
+                      {service.title}
+                    </h3>
+                    <p className="text-sm sm:text-base text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors">
+                      {service.description}
+                    </p>
+                  </div>
+
+                  {/* Hover Effect */}
+                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-current to-transparent opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* CTA Section */}
+          <motion.div 
+            className="text-center mt-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-white/50 max-w-2xl mx-auto">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                Ready to Simplify Your Global Payments?
+              </h3>
+              <p className="text-gray-600 mb-6">
+                Get competitive rates and secure payment processing for all your international transactions.
+              </p>
+              <a 
+                href="https://wa.me/2348123771335?text=Hello%20Marpe%20Team,%20I%20would%20like%20to%20learn%20more%20about%20your%20currency%20services%20and%20global%20payment%20solutions."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-semibold rounded-xl hover:from-emerald-600 hover:to-teal-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl"
+              >
+                Get Currency Quote
+                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -400,13 +587,12 @@ export default function Home() {
 
           <div className="text-center animate-on-scroll">
             <Link href="/collections">
-              <Button 
-                size="lg"
-                className="bg-marpe-blue text-white hover:bg-blue-700"
-                data-testid="button-view-all-collections"
-              >
+              <button className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-indigo-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl" data-testid="button-view-all-collections">
                 View All Collections
-              </Button>
+                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </button>
             </Link>
           </div>
         </div>
@@ -550,13 +736,12 @@ export default function Home() {
 
           <div className="text-center animate-on-scroll">
             <Link href="/customers">
-              <Button 
-                size="lg"
-                className="bg-marpe-blue text-white hover:bg-blue-700"
-                data-testid="button-view-all-testimonials"
-              >
+              <button className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-indigo-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl" data-testid="button-view-all-testimonials">
                 View All Testimonials
-              </Button>
+                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </button>
             </Link>
           </div>
         </div>

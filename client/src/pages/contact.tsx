@@ -75,7 +75,7 @@ export default function Contact() {
       
       {/* Hero Section */}
       <section 
-        className="pt-24 pb-16 relative"
+        className="pt-20 sm:pt-24 pb-12 sm:pb-16 relative"
         style={{
           backgroundImage: "url('/Contact-us.jpg')",
           backgroundSize: "cover",
@@ -88,75 +88,75 @@ export default function Contact() {
         
         {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6" data-testid="text-page-title">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6" data-testid="text-page-title">
             Get Started Today
           </h1>
-          <p className="text-xl text-white/90 max-w-3xl mx-auto" data-testid="text-page-subtitle">
+          <p className="text-lg sm:text-xl text-white/90 max-w-3xl mx-auto px-4 sm:px-0" data-testid="text-page-subtitle">
             Ready to simplify your procurement process? Let's discuss your sourcing needs.
           </p>
         </div>
       </section>
 
       {/* Contact Content */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-12 sm:py-16 lg:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16">
             {/* Contact Information */}
             <div>
-              <h3 className="text-3xl font-bold text-marpe-dark mb-8" data-testid="text-contact-info-title">
+              <h3 className="text-2xl sm:text-3xl font-bold text-marpe-dark mb-6 sm:mb-8" data-testid="text-contact-info-title">
                 Get in Touch
               </h3>
-              <div className="space-y-6">
+              <div className="space-y-4 sm:space-y-6">
                 <div className="flex items-center">
-                  <div className="w-12 h-12 bg-marpe-blue rounded-xl flex items-center justify-center mr-4">
-                    <MapPin className="h-6 w-6 text-white" />
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-marpe-blue rounded-xl flex items-center justify-center mr-3 sm:mr-4 flex-shrink-0">
+                    <MapPin className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-marpe-dark" data-testid="text-address-label">Address</h4>
-                    <p className="text-marpe-slate" data-testid="text-address">Port Harcourt, Nigeria</p>
+                    <h4 className="font-semibold text-marpe-dark text-sm sm:text-base" data-testid="text-address-label">Address</h4>
+                    <p className="text-marpe-slate text-sm sm:text-base" data-testid="text-address">Port Harcourt, Nigeria</p>
                   </div>
                 </div>
                 
                 <div className="flex items-center">
-                  <div className="w-12 h-12 bg-marpe-teal rounded-xl flex items-center justify-center mr-4">
-                    <Phone className="h-6 w-6 text-white" />
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-marpe-teal rounded-xl flex items-center justify-center mr-3 sm:mr-4 flex-shrink-0">
+                    <Phone className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-marpe-dark" data-testid="text-phone-label">Phone</h4>
-                    <p className="text-marpe-slate" data-testid="text-phone">+234 812 377 1335</p>
+                    <h4 className="font-semibold text-marpe-dark text-sm sm:text-base" data-testid="text-phone-label">Phone</h4>
+                    <p className="text-marpe-slate text-sm sm:text-base" data-testid="text-phone">+234 812 377 1335</p>
                   </div>
                 </div>
                 
                 <div className="flex items-center">
-                  <div className="w-12 h-12 bg-marpe-orange rounded-xl flex items-center justify-center mr-4">
-                    <Mail className="h-6 w-6 text-white" />
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-marpe-orange rounded-xl flex items-center justify-center mr-3 sm:mr-4 flex-shrink-0">
+                    <Mail className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-marpe-dark" data-testid="text-email-label">Email</h4>
-                    <p className="text-marpe-slate break-all" data-testid="text-email">marpeprocurementservices@gmail.com</p>
+                    <h4 className="font-semibold text-marpe-dark text-sm sm:text-base" data-testid="text-email-label">Email</h4>
+                    <p className="text-marpe-slate break-all text-sm sm:text-base" data-testid="text-email">marpeprocurementservices@gmail.com</p>
                   </div>
                 </div>
                 
                 <div className="flex items-center">
-                  <div className="w-12 h-12 bg-purple-600 rounded-xl flex items-center justify-center mr-4">
-                    <Clock className="h-6 w-6 text-white" />
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-purple-600 rounded-xl flex items-center justify-center mr-3 sm:mr-4 flex-shrink-0">
+                    <Clock className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-marpe-dark" data-testid="text-hours-label">Business Hours</h4>
-                    <p className="text-marpe-slate" data-testid="text-hours">Mon - Fri: 9:00 AM - 6:00 PM WAT</p>
+                    <h4 className="font-semibold text-marpe-dark text-sm sm:text-base" data-testid="text-hours-label">Business Hours</h4>
+                    <p className="text-marpe-slate text-sm sm:text-base" data-testid="text-hours">Mon - Fri: 9:00 AM - 6:00 PM WAT</p>
                   </div>
                 </div>
               </div>
             </div>
 
                {/* Contact Form */}
-               <div className="bg-white rounded-2xl p-8 shadow-lg">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">Send us a message</h3>
+               <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 shadow-lg">
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">Send us a message</h3>
             
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-4">
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="name" className="text-sm font-medium text-gray-700">
+                  <Label htmlFor="name" className="text-xs sm:text-sm font-medium text-gray-700">
                     Name <span className="text-red-500">*</span>
                   </Label>
                   <Input
@@ -166,13 +166,13 @@ export default function Contact() {
                     required
                     value={form.firstName}
                     onChange={handleChange}
-                    className="w-full h-12 px-4 bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-500 rounded-xl focus:outline-none focus:ring-2 focus:ring-marpe-blue focus:border-marpe-blue focus:bg-white transition-all duration-200"
+                    className="w-full h-10 sm:h-12 px-3 sm:px-4 bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-500 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-marpe-blue focus:border-marpe-blue focus:bg-white transition-all duration-200 text-sm sm:text-base"
                     placeholder="Your full name"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="email" className="text-sm font-medium text-gray-700">
+                  <Label htmlFor="email" className="text-xs sm:text-sm font-medium text-gray-700">
                     Email <span className="text-red-500">*</span>
                   </Label>
                   <Input
@@ -182,7 +182,7 @@ export default function Contact() {
                     required
                     value={form.email}
                     onChange={handleChange}
-                    className="w-full h-12 px-4 bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-500 rounded-xl focus:outline-none focus:ring-2 focus:ring-marpe-blue focus:border-marpe-blue focus:bg-white transition-all duration-200"
+                    className="w-full h-10 sm:h-12 px-3 sm:px-4 bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-500 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-marpe-blue focus:border-marpe-blue focus:bg-white transition-all duration-200 text-sm sm:text-base"
                     placeholder="your.email@example.com"
                   />
                 </div>

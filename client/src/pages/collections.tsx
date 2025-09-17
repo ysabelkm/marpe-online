@@ -50,7 +50,7 @@ export default function Collections() {
       
       {/* Hero Section */}
       <section 
-        className="pt-24 pb-16 relative"
+        className="pt-20 sm:pt-24 pb-12 sm:pb-16 relative"
         style={{
           backgroundImage: "url('/feature-collections.jpg')",
           backgroundSize: "cover",
@@ -63,23 +63,23 @@ export default function Collections() {
         
         {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6" data-testid="text-page-title">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6" data-testid="text-page-title">
             Featured Collections
           </h1>
-          <p className="text-xl text-white/90 max-w-3xl mx-auto" data-testid="text-page-subtitle">
+          <p className="text-lg sm:text-xl text-white/90 max-w-3xl mx-auto px-4 sm:px-0" data-testid="text-page-subtitle">
             Discover our most popular product categories sourced from trusted manufacturers worldwide
           </p>
         </div>
       </section>
 
       {/* Collections Grid */}
-      <section className="py-20">
+      <section className="py-12 sm:py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {collections.map((collection, index) => (
               <Card 
                 key={index} 
-                className="group collection-card rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 ease-out transform hover:-translate-y-2 border-0"
+                className="group collection-card rounded-2xl sm:rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 ease-out transform hover:-translate-y-1 sm:hover:-translate-y-2 border-0"
                 style={{
                   background: 'linear-gradient(135deg, #ffffff 0%, #f8fafc 100%)'
                 }}
@@ -88,30 +88,30 @@ export default function Collections() {
                   <img 
                     src={collection.image} 
                     alt={collection.title} 
-                    className="w-full h-56 object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                    className="w-full h-48 sm:h-56 object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                     data-testid={`img-collection-${index}`}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </div>
-                <CardContent className="p-8 relative">
-                  <h3 className="text-2xl font-bold mb-3 text-black group-hover:text-marpe-blue transition-colors duration-300" data-testid={`text-collection-title-${index}`}>
+                <CardContent className="p-4 sm:p-6 lg:p-8 relative">
+                  <h3 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-3 text-black group-hover:text-marpe-blue transition-colors duration-300" data-testid={`text-collection-title-${index}`}>
                     {collection.title}
                   </h3>
                   
-                  <p className="text-gray-700 mb-6 leading-relaxed text-base" data-testid={`text-collection-description-${index}`}>
+                  <p className="text-gray-700 mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base" data-testid={`text-collection-description-${index}`}>
                     {collection.description}
                   </p>
                   
                   <div className="flex justify-between items-center">
-                    <span className="text-sm font-semibold text-marpe-blue bg-blue-50 px-3 py-1 rounded-full" data-testid={`text-collection-count-${index}`}>
+                    <span className="text-xs sm:text-sm font-semibold text-marpe-blue bg-blue-50 px-2 sm:px-3 py-1 rounded-full" data-testid={`text-collection-count-${index}`}>
                       {collection.productCount}
                     </span>
                     <button 
-                      className="group inline-flex items-center gap-2 text-marpe-orange font-semibold text-sm hover:text-orange-600 transition-colors duration-300"
+                      className="group inline-flex items-center gap-1 sm:gap-2 text-marpe-orange font-semibold text-xs sm:text-sm hover:text-orange-600 transition-colors duration-300"
                       data-testid={`button-explore-${index}`}
                     >
                       Explore
-                      <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                      <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4 transition-transform duration-300 group-hover:translate-x-1" />
                     </button>
                   </div>
                 </CardContent>

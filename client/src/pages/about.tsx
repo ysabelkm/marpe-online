@@ -17,28 +17,28 @@ export default function About() {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="pt-24 pb-16 relative bg-cover bg-center bg-no-repeat" style={{backgroundImage: 'url("https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80")'}}>
+      <section className="pt-20 sm:pt-24 pb-12 sm:pb-16 relative bg-cover bg-center bg-no-repeat" style={{backgroundImage: 'url("https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80")'}}>
         {/* Dark overlay for text visibility */}
         <div className="absolute inset-0 bg-black/60"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6" data-testid="text-page-title">
-            About Marpe
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6" data-testid="text-page-title">
+            About Marpe®
           </h1>
-          <p className="text-xl text-white/90 max-w-3xl mx-auto" data-testid="text-page-subtitle">
+          <p className="text-lg sm:text-xl text-white/90 max-w-3xl mx-auto px-4 sm:px-0" data-testid="text-page-subtitle">
             Your trusted partner in global procurement and sourcing
           </p>
         </div>
       </section>
 
       {/* Main About Content */}
-      <section className="py-20 bg-white">
+      <section className="py-12 sm:py-16 lg:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
             <div>
-              <h2 className="text-4xl md:text-5xl font-bold text-marpe-dark mb-8" data-testid="text-main-title">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-marpe-dark mb-6 sm:mb-8" data-testid="text-main-title">
                 Making Global Procurement <span className="text-marpe-blue">Simple</span>
               </h2>
-              <div className="space-y-6 text-lg text-marpe-slate leading-relaxed">
+              <div className="space-y-4 sm:space-y-6 text-base sm:text-lg text-marpe-slate leading-relaxed">
                 <p data-testid="text-intro">
                   At Marpe, we make global procurement simple. As Africa's #1 sourcing and procurement company, we connect businesses with trusted manufacturers and suppliers across the world including China, Germany, Italy, United States.
                 </p>
@@ -51,13 +51,13 @@ export default function About() {
                 <p data-testid="text-commitment">
                   We pride ourselves on reliability, transparency, and unmatched efficiency—helping businesses of all sizes thrive by giving them exactly what they need, when they need it.
                 </p>
-                <p className="text-marpe-blue font-semibold text-xl" data-testid="text-tagline">
+                <p className="text-marpe-blue font-semibold text-lg sm:text-xl" data-testid="text-tagline">
                   Your business. Our sourcing. Worldwide.
                 </p>
               </div>
             </div>
-            <div>
-              <div className="grid grid-cols-2 gap-4">
+            <div className="mt-8 lg:mt-0">
+              <div className="grid grid-cols-2 gap-3 sm:gap-4">
                 <img 
                   src={globalshippingImage}
                   alt="Global shipping and logistics" 
@@ -89,9 +89,9 @@ export default function About() {
       </section>
 
       {/* How Our Shipping Process Works - Professional Timeline */}
-      <section className="py-24 bg-gradient-to-br from-slate-50 to-blue-50 relative overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
+      <section className="py-12 sm:py-16 lg:py-24 bg-gradient-to-br from-slate-50 to-blue-50 relative overflow-hidden">
+        {/* Background Pattern - hidden on mobile for performance */}
+        <div className="hidden sm:block absolute inset-0 opacity-5">
           <div className="absolute top-20 left-10 w-32 h-32 bg-marpe-blue rounded-full"></div>
           <div className="absolute top-40 right-20 w-24 h-24 bg-marpe-teal rounded-full"></div>
           <div className="absolute bottom-20 left-1/4 w-16 h-16 bg-marpe-orange rounded-full"></div>
@@ -99,14 +99,14 @@ export default function About() {
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Hero Section */}
-          <div className="text-center mb-20">
-            <div className="inline-flex items-center px-4 py-2 bg-marpe-blue/10 rounded-full text-marpe-blue font-semibold text-sm mb-6">
+          <div className="text-center mb-12 sm:mb-16 lg:mb-20">
+            <div className="inline-flex items-center px-3 sm:px-4 py-2 bg-marpe-blue/10 rounded-full text-marpe-blue font-semibold text-xs sm:text-sm mb-4 sm:mb-6">
               Global Procurement Process
             </div>
-            <h2 className="text-5xl md:text-6xl font-bold text-marpe-dark mb-6" data-testid="text-shipping-title">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-marpe-dark mb-4 sm:mb-6" data-testid="text-shipping-title">
               From Manufacturer to Your Door
             </h2>
-            <p className="text-xl text-marpe-slate max-w-4xl mx-auto leading-relaxed" data-testid="text-shipping-subtitle">
+            <p className="text-lg sm:text-xl text-marpe-slate max-w-4xl mx-auto leading-relaxed px-4 sm:px-0" data-testid="text-shipping-subtitle">
               <span className="font-semibold text-marpe-blue">Simplified Procurement in 9 Easy Steps.</span> 
               <br className="hidden sm:block" />
               We make global procurement simple, transparent, and reliable. Here's how we ensure your products are shipped successfully from manufacturers abroad to your doorstep in Africa.
@@ -114,25 +114,25 @@ export default function About() {
           </div>
 
           {/* Process Phases */}
-          <div className="flex justify-center mb-16">
-            <div className="flex flex-wrap gap-4">
-              <div className="flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-semibold">
-                <div className="w-3 h-3 bg-blue-500 rounded-full mr-2"></div>
+          <div className="flex justify-center mb-8 sm:mb-12 lg:mb-16">
+            <div className="flex flex-wrap gap-2 sm:gap-4 justify-center">
+              <div className="flex items-center px-3 sm:px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-xs sm:text-sm font-semibold">
+                <div className="w-2 h-2 sm:w-3 sm:h-3 bg-blue-500 rounded-full mr-2"></div>
                 Steps 1-3: Sourcing
               </div>
-              <div className="flex items-center px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-semibold">
-                <div className="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+              <div className="flex items-center px-3 sm:px-4 py-2 bg-green-100 text-green-800 rounded-full text-xs sm:text-sm font-semibold">
+                <div className="w-2 h-2 sm:w-3 sm:h-3 bg-green-500 rounded-full mr-2"></div>
                 Steps 4-6: Procurement & Shipping
               </div>
-              <div className="flex items-center px-4 py-2 bg-orange-100 text-orange-800 rounded-full text-sm font-semibold">
-                <div className="w-3 h-3 bg-orange-500 rounded-full mr-2"></div>
+              <div className="flex items-center px-3 sm:px-4 py-2 bg-orange-100 text-orange-800 rounded-full text-xs sm:text-sm font-semibold">
+                <div className="w-2 h-2 sm:w-3 sm:h-3 bg-orange-500 rounded-full mr-2"></div>
                 Steps 7-9: Delivery & Review
               </div>
             </div>
           </div>
 
           {/* Process Steps Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {[
               {
                 step: 1,

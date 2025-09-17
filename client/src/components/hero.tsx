@@ -49,84 +49,84 @@ export default function Hero() {
 
   return (
     <>
-    <section className="relative min-h-[70vh] bg-gradient-to-br from-blue-50 to-white overflow-hidden">
+    <section className="relative min-h-[80vh] sm:min-h-[70vh] bg-gradient-to-br from-blue-50 to-white overflow-hidden">
 
       
-      {/* Floating geometric shapes */}
-      <div className="absolute top-20 right-20 w-64 h-64 bg-gradient-to-br from-blue-200/20 to-purple-200/20 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-32 left-32 w-48 h-48 bg-gradient-to-tr from-blue-100/30 to-cyan-100/30 rounded-full blur-2xl"></div>
+      {/* Floating geometric shapes - hidden on mobile for better performance */}
+      <div className="hidden sm:block absolute top-20 right-20 w-64 h-64 bg-gradient-to-br from-blue-200/20 to-purple-200/20 rounded-full blur-3xl"></div>
+      <div className="hidden sm:block absolute bottom-32 left-32 w-48 h-48 bg-gradient-to-tr from-blue-100/30 to-cyan-100/30 rounded-full blur-2xl"></div>
       
-      {/* Additional geometric shapes for depth */}
-      <div className="absolute top-40 left-1/4 w-32 h-32 bg-gradient-to-br from-blue-100/20 to-indigo-100/20 rounded-lg blur-2xl transform rotate-12"></div>
-      <div className="absolute bottom-20 right-1/3 w-24 h-24 bg-gradient-to-tr from-cyan-100/25 to-blue-100/25 rounded-full blur-xl"></div>
-      <div className="absolute top-1/2 left-1/3 w-40 h-40 bg-gradient-to-br from-purple-100/15 to-blue-100/15 rounded-full blur-3xl"></div>
+      {/* Additional geometric shapes for depth - hidden on mobile */}
+      <div className="hidden lg:block absolute top-40 left-1/4 w-32 h-32 bg-gradient-to-br from-blue-100/20 to-indigo-100/20 rounded-lg blur-2xl transform rotate-12"></div>
+      <div className="hidden lg:block absolute bottom-20 right-1/3 w-24 h-24 bg-gradient-to-tr from-cyan-100/25 to-blue-100/25 rounded-full blur-xl"></div>
+      <div className="hidden lg:block absolute top-1/2 left-1/3 w-40 h-40 bg-gradient-to-br from-purple-100/15 to-blue-100/15 rounded-full blur-3xl"></div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-4">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start lg:items-start min-h-[50vh] pt-4 lg:pt-0">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-20 pb-8">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start lg:items-start min-h-[60vh] sm:min-h-[50vh] pt-4 lg:pt-0">
           {/* Left Content */}
-          <div className="animate-slide-up pt-12 lg:pt-20">
-            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight" data-testid="text-hero-title">
+          <div className="animate-slide-up pt-8 sm:pt-12 lg:pt-20">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight" data-testid="text-hero-title">
               China Procurement
               <span className="block text-marpe-orange drop-shadow-lg">
                 Made <span className="typewriter-text">{currentText}</span>
               </span>
             </h1>
             <p 
-              className="text-xl text-gray-600 mb-8 max-w-lg leading-relaxed" 
+              className="text-lg sm:text-xl text-gray-600 mb-6 sm:mb-8 max-w-lg leading-relaxed" 
               data-testid="text-hero-subtitle"
             >
               Boost efficiency, enhance supplier relationships, and streamline operations with our cutting-edge procurement technology.
             </p>
             
             {/* Email Input and CTA */}
-            <div className="flex flex-col sm:flex-row gap-4 mb-6">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-4 sm:mb-6">
               <div className="relative flex-1">
-                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4 sm:h-5 sm:w-5" />
                 <input 
                   type="email" 
                   placeholder="Enter your email"
-                  className="w-full pl-10 pr-4 py-4 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full pl-10 pr-4 py-3 sm:py-4 text-sm sm:text-base border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 />
               </div>
               <Button 
                 size="lg"
-                className="bg-blue-600 text-white px-8 py-4 text-lg font-semibold hover:bg-blue-700 rounded-lg shadow-lg transition-colors"
+                className="bg-blue-600 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold hover:bg-blue-700 rounded-lg shadow-lg transition-colors w-full sm:w-auto"
                 data-testid="button-start-sourcing"
               >
                 Get Started
               </Button>
             </div>
-            <p className="text-sm text-gray-500">
+            <p className="text-xs sm:text-sm text-gray-500 text-center sm:text-left">
               30 day free trial, no credit card required
             </p>
           </div>
 
           {/* Right Content - Modern UI Elements */}
-          <div className="relative animate-fade-in lg:min-h-[600px] pt-8" style={{ animationDelay: "0.3s" }}>
+          <div className="relative animate-fade-in lg:min-h-[600px] pt-4 sm:pt-8" style={{ animationDelay: "0.3s" }}>
             {/* Main Smartphone Mockup */}
-            <div className="relative lg:absolute lg:top-0 lg:right-0 w-full max-w-sm lg:w-80 mx-auto lg:mx-0 bg-white rounded-3xl p-4 shadow-2xl z-20 border border-gray-100">
-              <div className="bg-gray-900 rounded-2xl p-4 h-[600px] lg:h-[500px]">
+            <div className="relative lg:absolute lg:top-0 lg:right-0 w-full max-w-xs sm:max-w-sm lg:w-80 mx-auto lg:mx-0 bg-white rounded-2xl sm:rounded-3xl p-3 sm:p-4 shadow-2xl z-20 border border-gray-100">
+              <div className="bg-gray-900 rounded-xl sm:rounded-2xl p-3 sm:p-4 h-[400px] sm:h-[500px] lg:h-[500px]">
                 <div className="flex items-center mb-4">
                   <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
                     <Brain className="h-4 w-4 text-white" />
                   </div>
                   <span className="ml-2 text-white font-semibold">Marpe® Agent</span>
                 </div>
-                <div className="space-y-3">
-                  <div className="bg-blue-600 text-white p-3 rounded-lg max-w-xs">
-                    <p className="text-sm">Hi, welcome to Marpe. How can I help?</p>
+                <div className="space-y-2 sm:space-y-3">
+                  <div className="bg-blue-600 text-white p-2 sm:p-3 rounded-lg max-w-[85%] sm:max-w-xs">
+                    <p className="text-xs sm:text-sm">Hi, welcome to Marpe. How can I help?</p>
                   </div>
-                  <div className="bg-gray-700 text-white p-3 rounded-lg max-w-xs ml-auto">
-                    <p className="text-sm">I need industrial printers for my company</p>
+                  <div className="bg-gray-700 text-white p-2 sm:p-3 rounded-lg max-w-[85%] sm:max-w-xs ml-auto">
+                    <p className="text-xs sm:text-sm">I need industrial printers for my company</p>
                   </div>
-                  <div className="bg-gray-700 text-white p-3 rounded-lg max-w-xs ml-auto">
-                    <div className="flex flex-col space-y-2">
-                      <p className="text-sm">Here's what I'm looking for:</p>
-                      <div className="bg-gray-600 rounded-lg p-2">
+                  <div className="bg-gray-700 text-white p-2 sm:p-3 rounded-lg max-w-[85%] sm:max-w-xs ml-auto">
+                    <div className="flex flex-col space-y-1 sm:space-y-2">
+                      <p className="text-xs sm:text-sm">Here's what I'm looking for:</p>
+                      <div className="bg-gray-600 rounded-lg p-1 sm:p-2">
                         <img 
                           src="/industrial-printer.jpg" 
                           alt="Industrial printer" 
-                          className="w-full h-20 object-cover rounded"
+                          className="w-full h-16 sm:h-20 object-cover rounded"
                           onError={(e) => {
                             console.error('Image failed to load:', e);
                             e.currentTarget.style.display = 'none';
@@ -135,8 +135,8 @@ export default function Hero() {
                       </div>
                     </div>
                   </div>
-                  <div className="bg-blue-600 text-white p-3 rounded-lg max-w-xs">
-                    <p className="text-sm">Perfect! I can help you source industrial printers. What specifications do you need?</p>
+                  <div className="bg-blue-600 text-white p-2 sm:p-3 rounded-lg max-w-[85%] sm:max-w-xs">
+                    <p className="text-xs sm:text-sm">Perfect! I can help you source industrial printers. What specifications do you need?</p>
                   </div>
                 </div>
               </div>
